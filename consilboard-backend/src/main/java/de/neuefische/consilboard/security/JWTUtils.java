@@ -4,6 +4,7 @@ package de.neuefische.consilboard.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -14,8 +15,8 @@ import java.util.Map;
 @Service
 public class JWTUtils {
 
-
-    private String secret = "top-secret";
+    @Value("${auth.jwt.secret}")
+    private String secret;
 
     public String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
@@ -28,7 +29,7 @@ public class JWTUtils {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+       return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {

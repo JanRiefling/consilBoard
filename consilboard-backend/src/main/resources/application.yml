@@ -1,0 +1,9 @@
+
+logging:
+  level:
+    de.neuefische.projectplanning: debug
+
+
+auth:
+  jwt:
+    secret: top-secret-for-token
