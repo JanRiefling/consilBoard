@@ -12,7 +12,7 @@
     <artifactId>consilboard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>consilboard</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Backend to organise your Clients</description>
 
     <properties>
         <java.version>14</java.version>
