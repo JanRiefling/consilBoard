@@ -1,4 +1,4 @@
-package de.neuefische.consilboard.service;
+package de.neuefische.consilboard.security;
 
 import de.neuefische.consilboard.db.UserDB;
 import de.neuefische.consilboard.model.ConsilBoardUser;
@@ -8,13 +8,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MongoDbUserDetailService implements UserDetailsService {
 
-    private UserDB userDB;
+    private final UserDB userDB;
 
     @Autowired
     public MongoDbUserDetailService(UserDB userDB) {
