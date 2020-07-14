@@ -1,14 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import IdeaOverview from './pages/IdeaOverview';
-import IdeaDetails from './pages/IdeaDetails';
-import IdeaProvider from './context/idea/IdeaContextProvider';
 import LoginPage from './pages/LoginPage';
 import UserContextProvider, {
     LOGIN_SUCCESS,
 } from './context/user/UserContextProvider';
-import PrivateRoute from './pages/PrivateRoute';
-import PlanningAppBar from './components/PlanningAppBar/PlanningAppBar';
 import { UserDispatchContext } from './context/user/UserContext';
 import { getDecodedJWTToken, isJWTTokenValid } from './utils/jwt-utils';
 import { Container } from '@material-ui/core';
