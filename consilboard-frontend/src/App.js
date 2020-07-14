@@ -7,6 +7,7 @@ import UserContextProvider, {
 import { UserDispatchContext } from './context/user/UserContext';
 import { getDecodedJWTToken, isJWTTokenValid } from './utils/jwt-utils';
 import { Container } from '@material-ui/core';
+import Typography from "@material-ui/core/Typography";
 
 function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -21,7 +22,8 @@ function Navigation() {
         <BrowserRouter>
             <Container maxWidth={'md'} component="main">
                 <Switch>
-                    <Route path="/login" exact>
+                    <Route path="/" exact>
+                        <Typography>consilBoard</Typography>
                         <LoginPage />
                     </Route>
                 </Switch>
