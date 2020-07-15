@@ -27,11 +27,11 @@ public class LoginController {
 
 
     @PostMapping
-    public String login(@RequestBody LoginData data) {
+    public String login(@RequestBody LoginData data){
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword()));
             return jwtUtils.createToken(new HashMap<>(), data.getUsername());
-        } catch (Exception e) {
+        }catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid credentials");
         }
     }

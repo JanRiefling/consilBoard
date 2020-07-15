@@ -20,11 +20,11 @@ public class JWTUtils {
 
     public String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(Date.from(Instant.now().plus(Duration.ofHours(4))))
-                .signWith(SignatureAlgorithm.HS256, secret)
+                .setClaims(claims) // Body Data
+                .setSubject(subject) // username
+                .setIssuedAt(Date.from(Instant.now())) // current timestamp
+                .setExpiration(Date.from(Instant.now().plus(Duration.ofHours(4)))) // expires in 4 hours
+                .signWith(SignatureAlgorithm.HS256, secret) // sign with secret
                 .compact();
     }
 

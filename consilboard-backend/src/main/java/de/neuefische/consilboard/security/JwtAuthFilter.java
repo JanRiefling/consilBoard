@@ -22,12 +22,12 @@ import java.util.Optional;
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JWTUtils jwtUtils;
-    private final MongoDbUserDetailService userDetailService;
+    private final MongoDbUserDetailService detailsService;
 
     @Autowired
-    public JwtAuthFilter(JWTUtils jwtUtils, MongoDbUserDetailService mongoDbUserDetailService) {
+    public JwtAuthFilter(JWTUtils jwtUtils, MongoDbUserDetailService detailsService) {
         this.jwtUtils = jwtUtils;
-        this. userDetailService = mongoDbUserDetailService;
+        this.detailsService = detailsService;
     }
 
 
@@ -40,7 +40,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             try {
                 String userName = jwtUtils.extractUserName(jwtToken.get());
                 log.debug("parsed username " + userName);
-                UserDetails userDetails = userDetailService.loadUserByUsername(userName);
+                UserDetails userDetails = detailsService.loadUserByUsername(userName);
+
                 if (jwtUtils.validateToken(jwtToken.get(), userDetails.getUsername())) {
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
@@ -49,9 +50,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             } catch (Exception e) {
                 log.info("failed to get credentials", e);
             }
-
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+
     }
 
     private Optional<String> getJwtToken(HttpServletRequest httpServletRequest) {

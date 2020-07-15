@@ -1,7 +1,7 @@
 
 logging:
   level:
-    de.neuefische.projectplanning: debug
+    de.neuefische.consilboard: debug
 
 
 auth:
