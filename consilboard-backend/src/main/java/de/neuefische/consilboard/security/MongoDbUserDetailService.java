@@ -29,7 +29,9 @@ public class MongoDbUserDetailService implements UserDetailsService {
         if(optionalUser.isEmpty()) {
             throw new UsernameNotFoundException("user with username: \""+username+"\"not found");
         }
+
         ConsilBoardUser consilBoardUser = optionalUser.get();
+
         return new User(consilBoardUser.getUsername(), consilBoardUser.getPassword(), List.of(new SimpleGrantedAuthority("admin")));
     }
 }

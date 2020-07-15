@@ -29,13 +29,14 @@ public class JWTUtils {
     }
 
     private Claims extractAllClaims(String token) {
-       return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {
         Claims claims = extractAllClaims(token);
         return claims.getExpiration().before(new Date());
     }
+
 
     public String extractUserName(String token) {
         Claims claims = extractAllClaims(token);

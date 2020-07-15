@@ -22,7 +22,7 @@ function Navigation() {
         <BrowserRouter>
             <Container maxWidth={'md'} component="main">
                 <Switch>
-                    <Route path="/" exact>
+                    <Route path="/login" exact>
                         <Typography>consilBoard</Typography>
                         <LoginPage />
                     </Route>

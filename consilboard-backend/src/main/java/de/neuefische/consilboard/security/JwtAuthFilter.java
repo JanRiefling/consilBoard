@@ -1,6 +1,5 @@
 package de.neuefische.consilboard.security;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,24 +23,22 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JWTUtils jwtUtils;
     private final MongoDbUserDetailService detailsService;
 
+
     @Autowired
     public JwtAuthFilter(JWTUtils jwtUtils, MongoDbUserDetailService detailsService) {
         this.jwtUtils = jwtUtils;
         this.detailsService = detailsService;
     }
 
-
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         Optional<String> jwtToken = getJwtToken(httpServletRequest);
-
         if (jwtToken.isPresent()) {
             log.debug("start parsing jwt token");
             try {
                 String userName = jwtUtils.extractUserName(jwtToken.get());
                 log.debug("parsed username " + userName);
                 UserDetails userDetails = detailsService.loadUserByUsername(userName);
-
                 if (jwtUtils.validateToken(jwtToken.get(), userDetails.getUsername())) {
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
@@ -51,19 +48,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 log.info("failed to get credentials", e);
             }
         }
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
-
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
+
 
     private Optional<String> getJwtToken(HttpServletRequest httpServletRequest) {
         String authorizationHeader = httpServletRequest.getHeader("Authorization");
-
         if (authorizationHeader != null) {
             String token = authorizationHeader.replace("Bearer", "").trim();
             return Optional.of(token);
         }
         return Optional.empty();
     }
-
-
 }
