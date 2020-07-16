@@ -25,12 +25,12 @@ public class MongoDbUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<ConsilBoardUser> optionalUser = userDB.findById(username);
-        if(optionalUser.isEmpty()) {
+        Optional<ConsilBoardUser> optionalConsilBoardUser = userDB.findById(username);
+        if(optionalConsilBoardUser.isEmpty()) {
             throw new UsernameNotFoundException("user with username: \""+username+"\"not found");
         }
 
-        ConsilBoardUser consilBoardUser = optionalUser.get();
+        ConsilBoardUser consilBoardUser = optionalConsilBoardUser.get();
 
         return new User(consilBoardUser.getUsername(), consilBoardUser.getPassword(), List.of(new SimpleGrantedAuthority("admin")));
     }

@@ -49,10 +49,10 @@ public class LoginControllerTest {
 
         //WHEN
         String url = "http://localhost:" + port + "/auth/login";
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("superUser", "savePassword"), String.class);
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("ultraUser", "savePassword"), String.class);
 
         //THEN
-        /*assertEquals(HttpStatus.OK, tokenResponse.getStatusCode());*/
+        assertEquals(HttpStatus.OK, tokenResponse.getStatusCode());
         assertTrue(jwtUtils.validateToken(tokenResponse.getBody(), "ultraUser"));
     }
 
