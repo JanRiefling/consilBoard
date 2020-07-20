@@ -29,9 +29,7 @@ function Navigation() {
         <BrowserRouter>
             <Container maxWidth={'md'} component="main">
                 <Switch>
-                    <PrivateRoute path="/api" exact>
-                    <ConsilBoardUserPage/>
-                    </PrivateRoute>
+                    <PrivateRoute path="/api" component={ConsilBoardUserPage} exact />
                     <Route path="/login" exact>
                         <Typography>consilBoard</Typography>
                         <LoginPage />
