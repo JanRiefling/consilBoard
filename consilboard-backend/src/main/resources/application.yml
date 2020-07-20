@@ -1,4 +1,3 @@
-
 logging:
   level:
     de.neuefische.consilboard: debug
