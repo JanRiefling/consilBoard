@@ -3,8 +3,8 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import React, {useContext, useEffect} from "react";
 import ConsilBoard from "../components/ConsilBoard";
-import {fetchClients} from "../context/clients/client-actions";
 import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";
+import {fetchAllClients} from "../utils/clientCard-utils";
 
 function ConsilBoardUserPage(){
 
@@ -13,7 +13,7 @@ function ConsilBoardUserPage(){
 
     useEffect(() => {
         if (!fetchStatus) {
-            fetchClients(dispatch);
+            fetchAllClients(dispatch);
         }
     }, [fetchStatus, dispatch]);
 

@@ -9,7 +9,7 @@ export default function clientReducer(state, action) {
         case FETCH_CLIENTS:
             return { ...state, fetchStatus: 'PENDING' };
         case FETCH_CLIENTS_SUCCESS:
-            return { ...state, fetchStatus: 'SUCCESS', ideas: action.payload };
+            return { ...state, fetchStatus: 'SUCCESS', clients: action.payload };
         case FETCH_CLIENTS_FAILED:
             return { ...state, fetchStatus: 'FAILED' };
         default:
