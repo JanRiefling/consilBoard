@@ -1,4 +1,3 @@
-
 export async function performLogin(username, password) {
     const response = await fetch('/auth/login', {
         method: 'POST',

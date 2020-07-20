@@ -1,6 +1,6 @@
 const jwtDecode = require('jwt-decode');
 
-const key = 'consilboard-user-token';
+const key = 'planning-user-token';
 
 export function getJWTToken() {
     return localStorage.getItem(key);

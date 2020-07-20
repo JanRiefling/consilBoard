@@ -25,11 +25,11 @@ function PrivateRoute({ component: Component, ...rest }) {
             {...rest}
             render={(props) => {
                 if (authStatus !== 'SUCCESS') {
-                    return <Redirect to={'/login'} />;
+                    return <Redirect to={'/'} />;
                 }
 
                 if (new Date().getTime() / 1000 >= userData.exp) {
-                    return <Redirect to={'/login'} />;
+                    return <Redirect to={'/'} />;
                 }
 
                 return <Component {...props} />;
