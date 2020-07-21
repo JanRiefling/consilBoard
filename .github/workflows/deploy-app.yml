@@ -2,7 +2,7 @@ name: Deploy consilboard to heroku
 
 on:
   push:
-    branches: [ master ]
+    branches:
 
 jobs:
   build-frontend:
