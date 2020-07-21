@@ -1,8 +1,8 @@
 import React, {useContext, useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
-import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";
-import ClientCard from "./ClientCard";
-import {fetchClients} from "../context/clients/client-actions";
+import {ClientDispatchContext, ClientStateContext} from "../../context/clients/ClientContext";
+import ClientCard from "../ClientCard/ClientCard";
+import {fetchClients} from "../../context/clients/client-actions";
 
 export default function ConsilBoard(){
 
