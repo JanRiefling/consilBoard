@@ -8,7 +8,6 @@ import {removeJWTToken} from "../../utils/jwt-utils";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {LOGOUT} from "../../context/user/UserContextProvider";
 
-
 const useStyles = makeStyles(() => ({
     title: {
         flexGrow: 1,
@@ -29,7 +28,6 @@ function ConsilBoardAppBar() {
                 <Typography variant="h6" className={classes.title}>
                     ConsilBoard {userData && userData.displayName}
                 </Typography>
-                {userData}
                 {authStatus === 'SUCCESS' && (
                     <Button
                         color="inherit"
