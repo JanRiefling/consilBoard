@@ -7,3 +7,9 @@ logging:
 auth:
   jwt:
     secret: top-secret-for-token
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:YXSNcB78fj918XAi@cluster0.9gks1.mongodb.net/test?retryWrites=true&w=majority
