@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import {removeJWTToken} from "../../utils/jwt-utils";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {LOGOUT} from "../../context/user/UserContextProvider";
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
     title: {
@@ -22,6 +23,14 @@ function ConsilBoardAppBar() {
     const dispatch = useContext(UserDispatchContext);
 
 
+    function redirectToLoginPage() {
+        if(authStatus === 'LOGOUT') {
+            return (
+                <Redirect to={'/login'} />
+            )};
+    }
+
+
     return (
         <AppBar position="static" className={classes.background}>
             <Toolbar>
@@ -34,6 +43,7 @@ function ConsilBoardAppBar() {
                         onClick={() => {
                             dispatch({ type: LOGOUT });
                             removeJWTToken();
+                            redirectToLoginPage();
                         }}
                     >
                         Logout
