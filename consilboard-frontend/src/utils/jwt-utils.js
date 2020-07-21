@@ -1,5 +1,6 @@
 const jwtDecode = require('jwt-decode');
 
+
 const key = 'consilboard-user-token';
 
 export function getJWTToken() {
