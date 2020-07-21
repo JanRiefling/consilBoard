@@ -44,16 +44,16 @@ public class LoginControllerTest {
     @Test
     public void loginWithValidCredentials() {
         //GIVEN
-        ConsilBoardUser user = new ConsilBoardUser("ultraUser", encoder.encode("savePassword"), "admin");
+        ConsilBoardUser user = new ConsilBoardUser("ultraadmin", encoder.encode("savepassword"), "admin");
         userDB.save(user);
 
         //WHEN
         String url = "http://localhost:" + port + "/auth/login";
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("ultraUser", "savePassword"), String.class);
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("ultraadmin", "savepassword"), String.class);
 
         //THEN
         assertEquals(HttpStatus.OK, tokenResponse.getStatusCode());
-        assertTrue(jwtUtils.validateToken(tokenResponse.getBody(), "ultraUser"));
+        assertTrue(jwtUtils.validateToken(tokenResponse.getBody(), "ultraadmin"));
     }
 
     @Test

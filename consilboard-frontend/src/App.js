@@ -9,10 +9,6 @@ import { getDecodedJWTToken, isJWTTokenValid } from './utils/jwt-utils';
 import { Container } from '@material-ui/core';
 import Typography from "@material-ui/core/Typography";
 import ConsilBoardUserPage from "./pages/ConsilBoardUserPage";
-import PrivateRoute from "./pages/PrivateRoute";
-/*import PrivateRoute from "./pages/PrivateRoute";
-import ConsilBoardUserPage from "./pages/ConsilBoardUserPage";*/
-
 
 function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -29,9 +25,7 @@ function Navigation() {
         <BrowserRouter>
             <Container maxWidth={'md'} component="main">
                 <Switch>
-                    <PrivateRoute path="/api" exact>
-                    <ConsilBoardUserPage/>
-                    </PrivateRoute>
+                    <Route path="/api" component={ConsilBoardUserPage} exact />
                     <Route path="/login" exact>
                         <Typography>consilBoard</Typography>
                         <LoginPage />
