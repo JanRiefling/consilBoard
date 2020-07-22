@@ -14,6 +14,7 @@ import { performLogin } from '../utils/auth-utils';
 import { Redirect } from 'react-router-dom';
 import { getDecodedJWTToken, setJWTToken } from '../utils/jwt-utils';
 import { Grid, makeStyles } from '@material-ui/core';
+import SignUpForm from "../components/SignUp/SignUpForm";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
@@ -73,6 +74,7 @@ function LoginPage() {
                 </div>
                 <Button onClick={login}>Login</Button>
             </Grid>
+                <SignUpForm />
         </Grid>
     );
 }
