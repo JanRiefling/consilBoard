@@ -7,3 +7,4 @@ logging:
 auth:
   jwt:
     secret: top-secret-for-token
+

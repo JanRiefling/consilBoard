@@ -24,10 +24,7 @@ function ConsilBoardAppBar() {
 
 
     function redirectToLoginPage() {
-        if(authStatus === 'LOGOUT') {
-            return (
-                <Redirect to={'/login'} />
-            )};
+        return ( <Redirect to={'/login'} />);
     }
 
 
