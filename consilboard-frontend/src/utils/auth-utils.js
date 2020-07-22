@@ -24,8 +24,8 @@ export async function performSignUp(username, password) {
     });
 
     if (response.status !== 200) {
-        throw new Error(`failed to login: ${response.statusText}`);
+        throw new Error(`failed to fetch object: ${response.statusText}`);
     }
 
-    return await response.text();
+    return await response.json();
 }

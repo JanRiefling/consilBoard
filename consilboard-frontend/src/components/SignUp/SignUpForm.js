@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -6,6 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
+import {performSignUp} from "../../utils/auth-utils";
 
 function SignUpForm(){
 
@@ -19,6 +20,23 @@ function SignUpForm(){
         setOpen(false);
     };
 
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [checkPassword, setCheckPassword] = useState('');
+    const [notSamePassword, setNotSamePassword] = useState('');
+
+
+
+    function signUp() {
+        if (password !== checkPassword){
+            setNotSamePassword("Passwords dont match!");
+        }
+
+        performSignUp(username, password)
+            .then(data => console.log(data));
+    }
+
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -31,12 +49,15 @@ function SignUpForm(){
                         To subscribe to this website, please enter your email address here. We will send updates
                         occasionally.
                     </DialogContentText>
+                    <DialogContentText>{notSamePassword}</DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
                         id="username"
                         label="Username"
                         type="text"
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
                         fullWidth
                     />
                     <TextField
@@ -44,6 +65,17 @@ function SignUpForm(){
                         id="password"
                         label="Password"
                         type="password"
+                        value = {password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        fullWidth
+                    />
+                    <TextField
+                        margin="dense"
+                        id="checkPassword"
+                        label="Repeat Password"
+                        type="password"
+                        value = {checkPassword}
+                        onChange={(event) => setCheckPassword(event.target.value)}
                         fullWidth
                     />
                 </DialogContent>
@@ -51,7 +83,7 @@ function SignUpForm(){
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={signUp} color="primary">
                         Subscribe
                     </Button>
                 </DialogActions>
