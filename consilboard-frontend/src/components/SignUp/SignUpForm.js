@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -7,6 +7,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 import {performSignUp} from "../../utils/auth-utils";
+import {SignUpUserDispatchContext, SignUpUserStateContext} from "../../context/user/SignUpContext";
+import {SIGN_UP, SIGN_UP_FAILED, SIGN_UP_SUCCESS} from "../../context/user/SignUpProvider";
+import {Redirect} from "react-router-dom";
 
 function SignUpForm(){
 
@@ -26,15 +29,30 @@ function SignUpForm(){
     const [checkPassword, setCheckPassword] = useState('');
     const [notSamePassword, setNotSamePassword] = useState('');
 
-
+    const dispatch = useContext(SignUpUserDispatchContext);
 
     function signUp() {
-        if (password !== checkPassword){
-            setNotSamePassword("Passwords dont match!");
+        dispatch({type: SIGN_UP});
+        if (password !== checkPassword && password.length <= 0 && username.length <= 0){
+            dispatch({type: SIGN_UP_FAILED});
+            return setNotSamePassword("Passwords dont match!");
         }
 
         performSignUp(username, password)
-            .then(data => console.log(data));
+            .then((data) => {
+                console.log(data)
+                const signUpData = localStorage.getItem(username);
+                dispatch({type: SIGN_UP_SUCCESS, payload: signUpData})
+            })
+            .catch(() => {
+                dispatch({type: SIGN_UP_FAILED});
+                });
+    }
+
+
+    const {authStatus} = useContext(SignUpUserStateContext);
+    if(authStatus === 'SUCCESS'){
+        return <Redirect to={'/'} />;
     }
 
     return (

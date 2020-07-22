@@ -9,6 +9,7 @@ import { getDecodedJWTToken, isJWTTokenValid } from './utils/jwt-utils';
 import { Container } from '@material-ui/core';
 import ConsilBoardUserPage from "./pages/ConsilBoardUserPage";
 import ConsilBoardAppBar from "./components/ConsilBoardAppBar/ConsilBoardAppBar";
+import SignUpUserContextProvider from "./context/user/SignUpProvider";
 
 function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -39,7 +40,9 @@ function Navigation() {
 function App() {
     return (
         <UserContextProvider>
+            <SignUpUserContextProvider>
                 <Navigation />
+            </SignUpUserContextProvider>
         </UserContextProvider>
     );
 }
