@@ -2,7 +2,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import React, {useContext, useEffect} from "react";
-import ConsilBoard from "../components/ConsilBoard";
+import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
 import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";
 import {fetchAllClients} from "../utils/clientCard-utils";
 

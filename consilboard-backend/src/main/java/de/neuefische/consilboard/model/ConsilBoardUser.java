@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Document(collection = "user")
 public class ConsilBoardUser {
+    @Id
     private String username;
     private String password;
     private String role;
