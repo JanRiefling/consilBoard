@@ -4,10 +4,8 @@ import de.neuefische.consilboard.db.UserDB;
 import de.neuefische.consilboard.model.ConsilBoardUser;
 import de.neuefische.consilboard.model.SignUpData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoDataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class SignUpService {
@@ -18,12 +16,6 @@ public class SignUpService {
         this.userDB = userDB;
     }
 
-/*    public boolean checkIfUserNameIsAlreadyInDB(SignUpData data){
-       String username = data.getUsername();
-        signUpDB.findById(username);
-
-
-    }*/
 
     public ConsilBoardUser addUserToUserDB(SignUpData data) throws IllegalArgumentException{
 
@@ -36,10 +28,9 @@ public class SignUpService {
             throw new IllegalArgumentException("User already exists");
         }
 
-        if(username.equals("") && password.equals("")) {
+        if(username.isBlank() || password.isBlank()) {
             throw new IllegalArgumentException("Username or Password must contain something");
         }
-
 
         ConsilBoardUser newUser = new ConsilBoardUser(username, encodedPassword, data.getRole());
 

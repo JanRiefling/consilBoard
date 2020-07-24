@@ -15,6 +15,7 @@ import { Redirect } from 'react-router-dom';
 import { getDecodedJWTToken, setJWTToken } from '../utils/jwt-utils';
 import { Grid, makeStyles } from '@material-ui/core';
 import SignUpForm from "../components/SignUp/SignUpForm";
+import SignUpProvider from "../context/user/SignUpProvider";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
@@ -49,6 +50,7 @@ function LoginPage() {
     }
 
     return (
+        <SignUpProvider>
         <Grid
             className={classes.gridContainer}
             container
@@ -76,6 +78,7 @@ function LoginPage() {
             </Grid>
                 <SignUpForm />
         </Grid>
+        </SignUpProvider>
     );
 }
 

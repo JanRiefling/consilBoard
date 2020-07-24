@@ -33,7 +33,7 @@ function SignUpForm(){
 
     function signUp() {
         dispatch({type: SIGN_UP});
-        if (password !== checkPassword && password.length <= 0 && username.length <= 0){
+        if (password !== checkPassword || password.length <= 0 || username.length <= 0){
             dispatch({type: SIGN_UP_FAILED});
             return setNotSamePassword("Passwords dont match!");
         }

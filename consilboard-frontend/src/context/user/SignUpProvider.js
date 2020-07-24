@@ -9,7 +9,7 @@ const initialState = {
     authStatus: undefined,
 };
 
-function reducer(state, action){
+function signUpReducer(state, action){
     switch (action.type) {
         case SIGN_UP:
             return {...state, authStatus: 'PENDING'};
@@ -22,8 +22,8 @@ function reducer(state, action){
     }
 }
 
-function SignUpUserContextProvider({ children }) {
-    const [state, dispatch] = useReducer(reducer, initialState);
+function SignUpProvider({ children }) {
+    const [state, dispatch] = useReducer(signUpReducer, initialState);
 
     return (
         <SignUpUserStateContext.Provider value={state}>
@@ -34,4 +34,4 @@ function SignUpUserContextProvider({ children }) {
     );
 }
 
-export default SignUpUserContextProvider;
+export default SignUpProvider;
