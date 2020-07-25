@@ -28,4 +28,7 @@ public class ClientService {
         return clientDB.save(client);
     }
 
+    public void deleteClient(String id) {
+        clientDB.deleteById(id);
+    }
 }

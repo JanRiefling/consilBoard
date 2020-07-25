@@ -23,7 +23,7 @@ export function putClient(clientname) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ clientname: clientname }),
+        body: JSON.stringify({clientname: clientname}),
     }).then((response) => {
         if (response.status !== 200) {
             throw new Error('invalid response');
@@ -31,4 +31,15 @@ export function putClient(clientname) {
 
         return response.json();
     });
+}
+
+    export function deleteClient(id) {
+        const token = getJWTToken();
+        return fetch('/api/clients/${id}', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
 }

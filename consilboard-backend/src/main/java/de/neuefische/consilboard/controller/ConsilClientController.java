@@ -28,4 +28,9 @@ public class ConsilClientController {
         return clientService.add(data.getClientname(), principal.getName());
     }
 
+    @DeleteMapping("{id}")
+    public void deleteClient(@PathVariable String id) {
+        clientService.deleteClient(id);
+    }
+
 }

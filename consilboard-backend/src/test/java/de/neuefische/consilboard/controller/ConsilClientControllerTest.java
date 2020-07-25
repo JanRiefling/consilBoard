@@ -118,4 +118,23 @@ class ConsilClientControllerTest {
         assertTrue(byId.isPresent());
         assertEquals(byId.get(), expectedClient);
     }
+
+    @Test
+    @DisplayName("delete by id should delete idea with id")
+    public void deleteIdea(){
+        //GIVEN
+        String token = loginUser();
+        db.save(new Client("1", "Some Fancy Client", "user1"));
+        db.save(new Client("2", "Second Client", "user2"));
+
+        //WHEN
+        String url = "http://localhost:" + port + "/api/clients/2";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity entity = new HttpEntity(headers);
+        restTemplate.exchange(url,HttpMethod.DELETE,entity,Void.class);
+
+        //THEN
+        assertTrue(db.findById("2").isEmpty());
+    }
 }
