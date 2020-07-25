@@ -1,4 +1,4 @@
-import { fetchAllClients} from '../../utils/clientCard-utils';
+import { fetchAllClients} from '../../utils/client-utils';
 
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
 export const FETCH_CLIENTS_SUCCESS = 'FETCH_CLIENTS_SUCCESS';

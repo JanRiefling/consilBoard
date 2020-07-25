@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import React, {useContext, useEffect} from "react";
 import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
 import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";
-import {fetchAllClients} from "../utils/clientCard-utils";
+import {fetchAllClients} from "../utils/client-utils";
 
 function ConsilBoardUserPage(){
 
