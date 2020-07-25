@@ -1,21 +1,17 @@
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import React, {useContext, useEffect} from "react";
-import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
-import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";
-import {fetchAllClients} from "../utils/clientCard-utils";
+import React, {/*useContext, useEffect,*/ useState} from "react";
+import AddClientDialog from "../components/AddClientDialog/AddClientDialog";
+/*import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";*/
+
 
 function ConsilBoardUserPage(){
 
-    const { clients, fetchStatus } = useContext(ClientStateContext);
-    const dispatch = useContext(ClientDispatchContext);
+    const [showAddDialog, setShowAddDialog] = useState(false);
 
-    useEffect(() => {
-        if (!fetchStatus) {
-            fetchAllClients(dispatch);
-        }
-    }, [fetchStatus, dispatch]);
+/*    const { client, addStatus } = useContext(ClientStateContext);
+    const dispatch = useContext(ClientDispatchContext);*/
 
     return (
         <Grid
@@ -25,9 +21,18 @@ function ConsilBoardUserPage(){
         >
         <Typography>Hello User!</Typography>
         <Button>ConsilBoard</Button>
-        <Button>Clients</Button>
-            <ConsilBoard/>
-            {clients}
+            <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => setShowAddDialog(true)}
+            >
+                Add Client
+            </Button>
+
+            <AddClientDialog
+                open={showAddDialog}
+                handleClose={() => setShowAddDialog(false)}
+            />
         </Grid>
     );
 }

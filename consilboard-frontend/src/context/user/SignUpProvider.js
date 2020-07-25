@@ -12,11 +12,11 @@ const initialState = {
 function signUpReducer(state, action){
     switch (action.type) {
         case SIGN_UP:
-            return {...state, authStatus: 'PENDING'};
+            return {...state, signUpStatus: 'PENDING'};
         case SIGN_UP_SUCCESS:
-            return {...state, authStatus: 'SUCCESS', signUpData: action.payload};
+            return {...state, signUpStatus: 'SUCCESS', signUpData: action.payload};
         case SIGN_UP_FAILED:
-            return {...state, authStatus: 'FAILED'};
+            return {...state, signUpStatus: 'FAILED'};
         default:
             return state;
     }

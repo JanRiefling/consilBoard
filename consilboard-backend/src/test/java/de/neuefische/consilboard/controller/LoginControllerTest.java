@@ -1,4 +1,4 @@
-package de.neuefische.consilboard;
+package de.neuefische.consilboard.controller;
 
 
 import de.neuefische.consilboard.db.UserDB;

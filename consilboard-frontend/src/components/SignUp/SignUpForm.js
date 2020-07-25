@@ -50,8 +50,8 @@ function SignUpForm(){
     }
 
 
-    const {authStatus} = useContext(SignUpUserStateContext);
-    if(authStatus === 'SUCCESS'){
+    const {signUpStatus} = useContext(SignUpUserStateContext);
+    if(signUpStatus === 'SUCCESS'){
         return <Redirect to={'/'} />;
     }
 

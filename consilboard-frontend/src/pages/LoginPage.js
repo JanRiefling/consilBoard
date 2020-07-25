@@ -46,7 +46,7 @@ function LoginPage() {
 
     const { authStatus } = useContext(UserStateContext);
     if (authStatus === 'SUCCESS') {
-        return <Redirect to={'/'} />;
+        return <Redirect to={'/api'} />;
     }
 
     return (
