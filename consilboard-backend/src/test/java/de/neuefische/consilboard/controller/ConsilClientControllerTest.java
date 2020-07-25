@@ -66,29 +66,29 @@ class ConsilClientControllerTest {
         return tokenResponse.getBody();
     }
 
-/*    @Test
+    @Test
     public void getIdeasShouldReturnAllIdeas() {
         //GIVEN
         String token = loginUser();
 
-        String url = "http://localhost:" + port + "/api/ideas";
-        db.save(new Client("1", "Alfo", "Some Fancy Description", "user1"));
-        db.save(new Client("2", "Gerhard", "Some other Fancy Description", "superUser"));
+        String url = "http://localhost:" + port + "/api/clients";
+        db.save(new Client("1", "Alfo", "user1"));
+        db.save(new Client("2", "Gerhard", "superUser"));
 
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity entity = new HttpEntity(headers);
-        ResponseEntity<Idea[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, Idea[].class);
+        ResponseEntity<Client[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, Client[].class);
 
         //THEN
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        Idea[] ideas = response.getBody();
+        Client[] ideas = response.getBody();
         assertEquals(ideas.length, 2);
-        assertEquals(ideas[0], new Idea("1", "Some Fancy Idea", "user1"));
-        assertEquals(ideas[1], new Idea("2", "Some other Fancy Idea", "superUser"));
-    }*/
+        assertEquals(ideas[0], new Client("1", "Alfo", "user1"));
+        assertEquals(ideas[1], new Client("2", "Gerhard", "superUser"));
+    }
 
 
     @Test
@@ -137,4 +137,43 @@ class ConsilClientControllerTest {
         //THEN
         assertTrue(db.findById("2").isEmpty());
     }
+
+    @Test
+    @DisplayName("get by id should return idea with id")
+    public void getIdeaById(){
+        //GIVEN
+        String token = loginUser();
+        db.save(new Client("1", "Some Fancy Idea", "user1"));
+        db.save(new Client("2", "Clientname", "user2"));
+
+        //WHEN
+        String url = "http://localhost:" + port + "/api/clients/2";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity entity = new HttpEntity(headers);
+        ResponseEntity<Client> response = restTemplate.exchange(url, HttpMethod.GET, entity, Client.class);
+
+        //THEN
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody(), new Client("2", "Clientname", "user2"));
+    }
+
+    @Test
+    @DisplayName("when id not exists get idea by id should return status not found")
+    public void getIdeaByIdNotfound(){
+        //GIVEN
+        String token = loginUser();
+        db.save(new Client("1", "Clientname", "user1"));
+        //WHEN
+        String url = "http://localhost:" + port + "/api/clients/2";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity entity = new HttpEntity(headers);
+        ResponseEntity<Client> response = restTemplate.exchange(url, HttpMethod.GET, entity, Client.class);
+
+        //THEN
+        assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+    }
+
 }

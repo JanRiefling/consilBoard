@@ -2,10 +2,11 @@ package de.neuefische.consilboard.service;
 
 import de.neuefische.consilboard.db.ClientDB;
 import de.neuefische.consilboard.model.Client;
-import de.neuefische.consilboard.model.ConsilBoardUser;
 import de.neuefische.consilboard.utils.RandomIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -19,6 +20,9 @@ public class ClientService {
         this.randomIdUtil = randomIdUtil;
     }
 
+    public Iterable<Client> getAll() {
+        return clientDB.findAll();
+    }
 
     public Client add(String clientname, String user) {
         Client client = new Client();
@@ -30,5 +34,9 @@ public class ClientService {
 
     public void deleteClient(String id) {
         clientDB.deleteById(id);
+    }
+
+    public Optional<Client> getClientById(String id) {
+        return clientDB.findById(id);
     }
 }
