@@ -33,7 +33,7 @@ export function putClient(clientname) {
     });
 }
 
-    export function deleteClient(id) {
+    export function removeClientFromDb(id) {
         const token = getJWTToken();
         return fetch('/api/clients/${id}', {
             method: 'DELETE',

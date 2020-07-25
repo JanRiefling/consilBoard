@@ -2,7 +2,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import React, {/*useContext, useEffect,*/ useState} from "react";
-import AddClientDialog from "../components/AddClientDialog/AddClientDialog";
+import AddClientDialog from "../components/ConsilBoardMenuBar/AddClientDialog";
 /*import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";*/
 
 

@@ -1,4 +1,4 @@
-import {putClient} from '../../utils/client-utils';
+import {putClient, removeClientFromDb} from '../../utils/client-utils';
 
 /*export const FETCH_CLIENTS = 'FETCH_CLIENTS';
 export const FETCH_CLIENTS_SUCCESS = 'FETCH_CLIENTS_SUCCESS';
@@ -6,6 +6,9 @@ export const FETCH_CLIENTS_FAILED = 'FETCH_CLIENTS_FAILED';*/
 export const ADD_CLIENT = 'ADD_CLIENT';
 export const ADD_CLIENT_SUCCESS = 'ADD_CLIENT_SUCCESS';
 export const ADD_CLIENT_FAILED = 'ADD_CLIENT_FAILED';
+export const DELETE_CLIENT = 'DELETE_CLIENT';
+export const DELETE_CLIENT_SUCCESS = 'DELETE_CLIENT_SUCCESS';
+export const DELETE_CLIENT_FAILED = 'DELETE_CLIENT_FAILED';
 
 
 export async function addClient(dispatch, clientname) {
@@ -17,6 +20,17 @@ export async function addClient(dispatch, clientname) {
         dispatch({ type: ADD_CLIENT_FAILED, payload: error });
     }
 }
+
+export async function deleteClientFromDB(dispatch, id) {
+    dispatch({type: DELETE_CLIENT});
+    try{
+        await removeClientFromDb(id);
+        dispatch({type: DELETE_CLIENT_SUCCESS, payload: id})
+    } catch (error) {
+        dispatch({type: DELETE_CLIENT_FAILED})
+    }
+}
+
 /*
 export async function fetchClients(dispatch) {
     dispatch({ type: FETCH_CLIENTS });
