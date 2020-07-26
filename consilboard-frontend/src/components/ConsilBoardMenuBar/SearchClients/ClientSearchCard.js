@@ -33,6 +33,10 @@ function ClientSearchCard({ client }) {
     const classes = useStyles();
     const history = useHistory();
 
+    function handleAddToConsilBoard() {
+        return console.log("Add to ConsilBoard");
+    }
+
     return (
         <Grid item xs={10} sm={6} lg={3}>
             <Card
@@ -45,6 +49,9 @@ function ClientSearchCard({ client }) {
                     </Typography>
                     <IconButton onClick={handleDelete}>
                         <DeleteIcon />
+                    </IconButton>
+                    <IconButton onClick={handleAddToConsilBoard}>
+                        +
                     </IconButton>
                 </CardContent>
             </Card>

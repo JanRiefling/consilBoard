@@ -9,13 +9,11 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
 import {
-    FETCH_CLIENTS,
-    FETCH_CLIENTS_FAILED,
-    FETCH_CLIENTS_SUCCESS,
     fetchClients
 } from "../../../context/clients/client-actions";
 import ClientSearchCard from "./ClientSearchCard";
 import {LOGIN_FAILED} from "../../../context/user/UserContextProvider";
+import {fetchClientsByQuery} from "../../../utils/client-utils";
 
 
 function SearchDialog({ open, handleClose }){
@@ -25,6 +23,8 @@ function SearchDialog({ open, handleClose }){
 
     const dispatch = useContext(ClientDispatchContext);
     const [allClients, setAllClients] = useState(false);
+    const [query, setQuery] = useState('');
+    const [searchClients, setSearchClients] = useState([]);
 
       useEffect(() => {
         if (!fetchStatus) {
@@ -33,8 +33,21 @@ function SearchDialog({ open, handleClose }){
     }, [fetchStatus, dispatch]);
 
 
+      useEffect(() => {
+          fetchClientsByQuery(query)
+              .then((data) => {
+                  setSearchClients(data)
+                  console.log(data)
+              })
+              .catch((e) => console.error(e));
+      },[query]);
+
+
     function showAllClients() {
         setAllClients(true);
+        if(allClients === true) {
+            setAllClients(false);
+        }
     }
 
 
@@ -54,8 +67,12 @@ function SearchDialog({ open, handleClose }){
                     <TextField
                         fullWidth={true}
                         multiline={true}
-                        label="Find Client"
-                        /*onChange={}*/
+                        label="Find Clients"
+                        value={query}
+                        onChange={(event) => {
+                            setQuery(event.target.value)
+                            console.log(event);
+                        }}
                         margin="normal"
                         /*error={}*/
                         helperText={'min length 2'}
@@ -67,13 +84,6 @@ function SearchDialog({ open, handleClose }){
                 <Button onClick={handleClose} color="primary">
                     Cancel
                 </Button>
-{/*                <Button
-                    disabled={false}
-                    onClick={""}
-                    color="primary"
-                >
-                    FIND
-                </Button>*/}
                 <Button
                     disabled={false}
                     color="primary"
@@ -90,6 +100,14 @@ function SearchDialog({ open, handleClose }){
                             client={client}
                         />
                     )) : []}
+                </Grid>
+                <Grid container justify={'center'}>
+                    { searchClients != null && searchClients.map((client) => (
+                        <ClientSearchCard
+                            key= {client.id}
+                            client={client}
+                        />
+                    ))}
                 </Grid>
             </DialogContent>
         </Dialog>

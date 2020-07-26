@@ -28,6 +28,20 @@ export async function fetchClient(id) {
     return await response.json();
 }
 
+export async function fetchClientsByQuery(query) {
+    const token = getJWTToken();
+    const response = await fetch(`/api/clients/search/${query}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (response.status !== 200) {
+        throw new Error('something went wrong!');
+    }
+    return await response.json();
+}
+
 
 export function putClient(clientname) {
     const token = getJWTToken();
@@ -56,4 +70,7 @@ export function putClient(clientname) {
                 Authorization: `Bearer ${token}`,
             },
         });
+
+
+
 }

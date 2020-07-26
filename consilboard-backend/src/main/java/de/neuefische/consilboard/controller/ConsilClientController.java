@@ -39,9 +39,13 @@ public class ConsilClientController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "client with " + id + " not exists");
     }
 
+    @GetMapping("search/{query}")
+    public Iterable<Client> searchStudentByName(@PathVariable String query) {
+        return clientService.findClientsByName(query);
+    }
 
     @PutMapping
-    public Client addIdea(@RequestBody @Valid AddClientDto data, Principal principal){
+    public Client addClientToDb(@RequestBody @Valid AddClientDto data, Principal principal){
         return clientService.add(data.getClientname(), principal.getName());
     }
 
@@ -49,8 +53,5 @@ public class ConsilClientController {
     public void deleteClient(@PathVariable String id) {
         clientService.deleteClient(id);
     }
-
-
-
 
 }

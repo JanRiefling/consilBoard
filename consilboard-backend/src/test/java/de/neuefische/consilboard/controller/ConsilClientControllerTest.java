@@ -23,6 +23,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -175,5 +177,22 @@ class ConsilClientControllerTest {
         //THEN
         assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
+
+
+/*    @Test
+    @DisplayName("Find client by query contains a returns List")
+    public void findClientsWithMongoDbQuery(){
+        //GIVEN
+        String token = loginUser();
+        db.saveAll(List.of(new Client("1", "aaaa", "user1"), new Client("2", "bbbbb", "user1"), new Client("3", "cccccc", "user1")));
+        Iterable<Client> clientSearchList = new ArrayList<>();
+        //WHEN
+        String url = "http://localhost:" + port + "/api/clients/search";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity entity = new HttpEntity(headers);
+        ResponseEntity<Client> response = restTemplate.exchange(url, HttpMethod.GET, entity, Client.class);
+        //THEN
+    }*/
 
 }
