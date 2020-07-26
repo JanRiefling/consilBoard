@@ -1,12 +1,16 @@
 import React, {useState} from "react";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import AddClientDialog from "./AddClientDialog";
+/*
+import RemoveClientFromDbDialog from "./RemoveClientFromDbDialog";
+*/
+import SearchDialog from "./SearchClients/SearchDialog";
 
 function ConsilBoardMenuBar() {
     const [showAddDialog, setShowAddDialog] = useState(false);
-    const [showRemoveDialog, setShowRemoveDialog] = useState(false);
+    /*const [showRemoveDialog, setShowRemoveDialog] = useState(false);*/
+    const [showSearchDialog, setShowSearchDialog] = useState(false);
 
 
     return (
@@ -15,8 +19,7 @@ function ConsilBoardMenuBar() {
             alignContent="center"
             justify="center"
         >
-            <Typography>Hello User!</Typography>
-            <Button
+{/*            <Button
                 variant="outlined"
                 color="primary"
                 onClick={() => setShowRemoveDialog(true)}
@@ -27,7 +30,7 @@ function ConsilBoardMenuBar() {
             <RemoveClientFromDbDialog
             open={showRemoveDialog}
             handleClose={() => setShowRemoveDialog(false)}
-            />
+            />*/}
 
             <Button
                 variant="outlined"
@@ -41,6 +44,22 @@ function ConsilBoardMenuBar() {
                 open={showAddDialog}
                 handleClose={() => setShowAddDialog(false)}
             />
+
+            <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => setShowSearchDialog(true)}
+            >
+
+                Find Client!
+            </Button>
+
+
+            <SearchDialog
+                open={showSearchDialog}
+                handleClose={() => setShowSearchDialog(false)}
+            />
+
         </Grid>
     );
 }

@@ -10,6 +10,8 @@ import { Container } from '@material-ui/core';
 import ConsilBoardUserPage from "./pages/ConsilBoardUserPage";
 import ConsilBoardAppBar from "./components/ConsilBoardAppBar/ConsilBoardAppBar";
 import ClientProvider from "./context/clients/ClientProvider";
+import PrivateRoute from "./pages/PrivateRoute";
+import ClientDetails from "./pages/ClientDetails";
 
 function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -27,7 +29,12 @@ function Navigation() {
             <ConsilBoardAppBar />
             <Container maxWidth={'md'} component="main">
                 <Switch>
-                    <Route path="/api" component={ConsilBoardUserPage} exact />
+                    <PrivateRoute
+                        path="/clients/:id"
+                        component={ClientDetails}
+                        exact
+                    />
+                    <PrivateRoute path="/api" component={ConsilBoardUserPage} exact />
                     <Route path="/" exact>
                         <LoginPage />
                     </Route>

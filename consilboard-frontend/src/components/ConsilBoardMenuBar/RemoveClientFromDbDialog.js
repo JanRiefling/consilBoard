@@ -12,6 +12,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import {removeClientFromDb} from "../../utils/client-utils";
 
+/*
 export default function RemoveClientFromDbDialog({ open, handleClose }) {
     const [clientname, setClientname] = useState('');
 
@@ -79,4 +80,4 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
             </DialogActions>
         </Dialog>
     );
-}
+}*/
