@@ -53,5 +53,4 @@ public class ConsilClientController {
     public void deleteClient(@PathVariable String id) {
         clientService.deleteClient(id);
     }
-
 }
