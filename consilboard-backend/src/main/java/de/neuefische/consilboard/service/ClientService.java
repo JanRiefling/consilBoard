@@ -42,7 +42,9 @@ public class ClientService {
         return clientDB.findById(id);
     }
 
-    public Iterable<Client> findClientsByName(String query) {
+    public Iterable<Client> findClientsByName(String query, String user) {
+         Iterable<Client> userClients = clientDB.findClientsByUser(user);
+         //Searching in UserClients und oder db Query methode anpassen
         return clientDB.findClientsByClientnameIsStartingWith(query);
     }
 }

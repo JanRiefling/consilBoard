@@ -11,6 +11,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {
     ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
 } from "../../../context/clients/client-actions";
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 
 const useStyles = makeStyles({
@@ -52,7 +53,7 @@ function ClientSearchCard({ client }) {
                         dispatch({type: ADD_CLIENT_TO_CONSILBOARD_SUCCESS, payload: client});
                         console.log(addToBoard);
                     }}>
-                        +
+                        <AddCircleOutlineOutlinedIcon />
                     </IconButton>
                 </CardContent>
             </Card>

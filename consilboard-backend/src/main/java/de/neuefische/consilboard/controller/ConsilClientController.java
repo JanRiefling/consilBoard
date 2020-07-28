@@ -2,6 +2,7 @@ package de.neuefische.consilboard.controller;
 
 
 import de.neuefische.consilboard.dto.AddClientDto;
+import de.neuefische.consilboard.dto.SearchDto;
 import de.neuefische.consilboard.model.Client;
 import de.neuefische.consilboard.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,8 @@ public class ConsilClientController {
     }
 
     @GetMapping("search/{query}")
-    public Iterable<Client> searchStudentByName(@PathVariable String query) {
-        return clientService.findClientsByName(query);
+    public Iterable<Client> searchStudentByName(@PathVariable String query, Principal principal) {
+        return clientService.findClientsByName(query, principal.getName());
     }
 
     @PutMapping

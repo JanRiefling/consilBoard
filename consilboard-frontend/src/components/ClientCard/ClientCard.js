@@ -4,13 +4,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-/*
+import BackspaceOutlinedIcon from '@material-ui/icons/BackspaceOutlined';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { useHistory } from 'react-router-dom';
-*/
 import { Grid } from '@material-ui/core';
 import {ClientDispatchContext} from "../../context/clients/ClientContext";
 import {REMOVE_CLIENT_FROM_CONSILBOARD} from "../../context/clients/client-actions";
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 
 const useStyles = makeStyles({
     root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
 function ClientCard({ client }) {
 
     const classes = useStyles();
-    /*const history = useHistory();*/
+    const history = useHistory();
     const dispatch = useContext(ClientDispatchContext);
 
 
@@ -33,7 +34,6 @@ function ClientCard({ client }) {
         <Grid item xs={10} sm={6} lg={3}>
             <Card
                 className={classes.root}
-                /*onClick={() => history.push(`/client/${client.id}`)}*/
             >
                 <CardContent>
                     <Typography variant="body1" component="p">
@@ -45,7 +45,18 @@ function ClientCard({ client }) {
                             console.log(client.clientname);
                         }}
                     >
-                        <DeleteIcon />
+                        <BackspaceOutlinedIcon />
+                    </IconButton>
+                    <IconButton
+                        onClick={() => history.push(`/client/${client.id}`)}
+                    >
+                        <InfoOutlinedIcon />
+                    </IconButton>
+                    <IconButton>
+                        <CreateOutlinedIcon />
+                    </IconButton>
+                    <IconButton>
+                        <NoteAddOutlinedIcon />
                     </IconButton>
                 </CardContent>
             </Card>

@@ -50,7 +50,7 @@ function App() {
         <UserContextProvider>
             <ClientProvider>
                 <ConsilBoardProvider>
-                <Navigation />
+                    <Navigation />
                 </ConsilBoardProvider>
             </ClientProvider>
         </UserContextProvider>
