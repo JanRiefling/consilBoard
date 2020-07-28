@@ -31,7 +31,7 @@ export default function clientReducer(state, action) {
             return { ...state, addAddToBoardStatus: 'FAILED' };
         case REMOVE_CLIENT_FROM_CONSILBOARD:
             return {
-                ...state, clients: state.clients.filter((client) => {
+                ...state, clientsToBoard: state.clientsToBoard.filter((client) => {
                     return client.id !== action.payload;
                 }),
             };
