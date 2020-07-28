@@ -30,7 +30,7 @@ function ClientCard({ client }) {
             >
                 <CardContent>
                     <Typography variant="body1" component="p">
-                        {client.user} {client.description}
+                        {client.clientname}
                     </Typography>
                     <IconButton>
                         <DeleteIcon />

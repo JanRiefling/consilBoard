@@ -8,30 +8,31 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
-import {ClientDispatchContext, ClientStateContext} from "../../context/clients/ClientContext";
-import {addClient} from "../../context/clients/client-actions";
+import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
+import {addConsilBoard} from "../../../context/consilboard/consilBoard-action";
 
-export default function AddClientDialog({ open, handleClose }) {
-    const [clientname, setClientname] = useState('');
+export default function AddNewConsilBoard({ open, handleClose }) {
+    const [consilBoardName, setConsilBoardName] = useState('');
 
-    const { addStatus } = useContext(ClientStateContext);
+    const { addBoardStatus } = useContext(ClientStateContext);
 
     useEffect(() => {
-        if (addStatus === 'SUCCESS') {
-            setClientname('');
+        if (addBoardStatus === 'SUCCESS') {
+            setConsilBoardName('');
             handleClose();
         }
         // eslint-disable-next-line
-    }, [addStatus]);
+    }, [addBoardStatus]);
 
     const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
-        addClient(dispatch, clientname);
+        addConsilBoard(dispatch, consilBoardName);
+        handleClose();
     }
 
     function handleChange(event) {
-        setClientname(event.target.value);
+        setConsilBoardName(event.target.value);
     }
 
     return (
@@ -49,18 +50,18 @@ export default function AddClientDialog({ open, handleClose }) {
                     <TextField
                         fullWidth={true}
                         multiline={true}
-                        label="Clientname"
-                        value={clientname}
+                        label="ConsilBoardName"
+                        value={consilBoardName}
                         onChange={handleChange}
                         margin="normal"
-                        error={clientname.length < 2}
+                        error={consilBoardName.length < 2}
                         helperText={'min length 2'}
                     />
                 </form>
-                {addStatus === 'PENDING' && <CircularProgress />}
-                {addStatus === 'FAILED' && (
+                {addBoardStatus === 'PENDING' && <CircularProgress />}
+                {addBoardStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
-                        Add client failed
+                        Add Board client failed
                     </Typography>
                 )}
             </DialogContent>
@@ -69,7 +70,7 @@ export default function AddClientDialog({ open, handleClose }) {
                     Cancel
                 </Button>
                 <Button
-                    disabled={clientname.length < 2}
+                    disabled={consilBoardName.length < 2}
                     onClick={handleSubmit}
                     color="primary"
                 >

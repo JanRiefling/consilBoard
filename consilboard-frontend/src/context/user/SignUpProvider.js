@@ -6,7 +6,7 @@ export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
 
 const initialState = {
-    authStatus: undefined,
+    signUpStatus: undefined,
 };
 
 function signUpReducer(state, action){

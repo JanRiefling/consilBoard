@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {fetchClient} from "../utils/client-utils";
-import ClientSearchCard from "../components/ConsilBoardMenuBar/SearchClients/ClientSearchCard";
+import ClientCard from "../components/ClientCard/ClientCard";
 
 function ClientDetails() {
     const { id } = useParams();
@@ -13,7 +13,7 @@ function ClientDetails() {
             .catch((e) => console.error(e));
     }, [id]);
 
-    return <>{client && <ClientSearchCard client={client} />}</>;
+    return <>{client && <ClientCard client={client} />}</>;
 }
 
 export default ClientDetails;

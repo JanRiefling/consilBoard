@@ -13,6 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Consilboard {
     @Id
     private String id;
-    private String consilboardName;
+    private String consilBoardName;
     private String user;
 }

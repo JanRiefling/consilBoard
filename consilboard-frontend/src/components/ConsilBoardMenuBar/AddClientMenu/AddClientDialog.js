@@ -1,19 +1,17 @@
-import React, {useContext, useEffect, useState} from "react";
-import {ClientDispatchContext, ClientStateContext} from "../../context/clients/ClientContext";
-import {addClient} from "../../context/clients/client-actions";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import TextField from "@material-ui/core/TextField";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Typography from "@material-ui/core/Typography";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
-import {removeClientFromDb} from "../../utils/client-utils";
+import React, { useContext, useEffect, useState } from 'react';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import TextField from '@material-ui/core/TextField';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Typography from '@material-ui/core/Typography';
+import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
+import {addClient} from "../../../context/clients/client-actions";
 
-/*
-export default function RemoveClientFromDbDialog({ open, handleClose }) {
+export default function AddClientDialog({ open, handleClose }) {
     const [clientname, setClientname] = useState('');
 
     const { addStatus } = useContext(ClientStateContext);
@@ -29,7 +27,7 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
     const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
-        removeClientFromDb(dispatch, clientname);
+        addClient(dispatch, clientname);
     }
 
     function handleChange(event) {
@@ -80,4 +78,4 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
             </DialogActions>
         </Dialog>
     );
-}*/
+}

@@ -12,7 +12,6 @@ import {
     fetchClients
 } from "../../../context/clients/client-actions";
 import ClientSearchCard from "./ClientSearchCard";
-import {LOGIN_FAILED} from "../../../context/user/UserContextProvider";
 import {fetchClientsByQuery} from "../../../utils/client-utils";
 
 
@@ -42,14 +41,12 @@ function SearchDialog({ open, handleClose }){
               .catch((e) => console.error(e));
       },[query]);
 
-
     function showAllClients() {
         setAllClients(true);
         if(allClients === true) {
             setAllClients(false);
         }
     }
-
 
     return (
         <>

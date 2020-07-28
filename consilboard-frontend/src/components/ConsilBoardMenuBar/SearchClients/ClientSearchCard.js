@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {ClientDispatchContext} from "../../../context/clients/ClientContext";
+import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
 /*import {removeClientFromDb} from "../../../utils/client-utils";*/
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -8,7 +8,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
-import { useHistory } from 'react-router-dom';
+import {
+    ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
+} from "../../../context/clients/client-actions";
+
 
 const useStyles = makeStyles({
     root: {
@@ -23,7 +26,7 @@ const useStyles = makeStyles({
 function ClientSearchCard({ client }) {
 
     const dispatch = useContext(ClientDispatchContext);
-
+    const {addToBoard} = useContext(ClientStateContext);
     function handleDelete() {
 
         console.log(dispatch, client.id);
@@ -31,17 +34,12 @@ function ClientSearchCard({ client }) {
         removeClientFromDb(dispatch, client.id)*/
     }
     const classes = useStyles();
-    const history = useHistory();
 
-    function handleAddToConsilBoard() {
-        return console.log("Add to ConsilBoard");
-    }
 
     return (
         <Grid item xs={10} sm={6} lg={3}>
             <Card
                 className={classes.root}
-                onClick={() => history.push(`/clients/${client.id}`)}
             >
                 <CardContent>
                     <Typography variant="body1" component="p">
@@ -50,7 +48,10 @@ function ClientSearchCard({ client }) {
                     <IconButton onClick={handleDelete}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton onClick={handleAddToConsilBoard}>
+                    <IconButton onClick={() => {
+                        dispatch({type: ADD_CLIENT_TO_CONSILBOARD_SUCCESS, payload: client});
+                        console.log(addToBoard);
+                    }}>
                         +
                     </IconButton>
                 </CardContent>
