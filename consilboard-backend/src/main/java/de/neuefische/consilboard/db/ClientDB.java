@@ -6,7 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ClientDB extends PagingAndSortingRepository<Client, String> {
 
-    Iterable<Client> findClientsByClientnameIsStartingWith(String query);
-    Iterable<Client> findClientsByUser(String user);
+    Iterable<Client> findClientsByClientnameStartingWithAndUser(String query, String user);
 
 }

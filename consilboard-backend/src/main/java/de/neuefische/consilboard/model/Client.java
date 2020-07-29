@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Document("client")
 public class Client {
-
     @Id
     private String id;
     private String clientname;

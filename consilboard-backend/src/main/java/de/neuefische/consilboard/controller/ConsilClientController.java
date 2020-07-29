@@ -42,7 +42,8 @@ public class ConsilClientController {
 
     @GetMapping("search/{query}")
     public Iterable<Client> searchStudentByName(@PathVariable String query, Principal principal) {
-        return clientService.findClientsByName(query, principal.getName());
+        String user = principal.getName();
+        return clientService.findClientsByName(query, user);
     }
 
     @PutMapping

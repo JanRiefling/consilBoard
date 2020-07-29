@@ -43,8 +43,9 @@ public class ClientService {
     }
 
     public Iterable<Client> findClientsByName(String query, String user) {
-         Iterable<Client> userClients = clientDB.findClientsByUser(user);
+
          //Searching in UserClients und oder db Query methode anpassen
-        return clientDB.findClientsByClientnameIsStartingWith(query);
+
+        return clientDB.findClientsByClientnameStartingWithAndUser(query, user);
     }
 }
