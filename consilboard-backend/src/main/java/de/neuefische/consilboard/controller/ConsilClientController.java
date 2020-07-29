@@ -27,8 +27,8 @@ public class ConsilClientController {
     }
 
     @GetMapping
-    public Iterable<Client> getAllClients(){
-        return clientService.getAll();
+    public Iterable<Client> getAllClients(Principal principal){
+        return clientService.getAll(principal.getName());
     }
 
     @GetMapping("{id}")

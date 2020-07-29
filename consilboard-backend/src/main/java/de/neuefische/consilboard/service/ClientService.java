@@ -22,8 +22,8 @@ public class ClientService {
         this.randomIdUtil = randomIdUtil;
     }
 
-    public Iterable<Client> getAll() {
-        return clientDB.findAll();
+    public Iterable<Client> getAll(String user) {
+        return clientDB.findAllByUser(user);
     }
 
     public Client add(String clientname, String user) {
@@ -43,8 +43,6 @@ public class ClientService {
     }
 
     public Iterable<Client> findClientsByName(String query, String user) {
-
-         //Searching in UserClients und oder db Query methode anpassen
 
         return clientDB.findClientsByClientnameStartingWithAndUser(query, user);
     }

@@ -2,6 +2,7 @@ package de.neuefische.consilboard.controller;
 
 
 import de.neuefische.consilboard.dto.AddConsilBoardDto;
+import de.neuefische.consilboard.model.Client;
 import de.neuefische.consilboard.model.Consilboard;
 import de.neuefische.consilboard.service.ConsilBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,6 @@ public class ConsilBoardController {
         this.consilBoardService = consilBoardService;
     }
 
-    @GetMapping
-    public Iterable<Consilboard> getAllUserRelatedConsilboards(){
-
-        return null;
-    }
 
     @GetMapping("{id}")
     public Consilboard getPersonalConsilBoard(@PathVariable String id) {
@@ -37,12 +33,23 @@ public class ConsilBoardController {
         if (consilboardOptional.isPresent()) {
             return consilboardOptional.get();
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "idea with " + id + " not exists");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "consilboard with " + id + " not exists");
     }
 
     @PutMapping
-    public Consilboard addIdea(@RequestBody @Valid AddConsilBoardDto data, Principal principal){
+    public Consilboard addConsilboard(@RequestBody @Valid AddConsilBoardDto data, Principal principal){
         return consilBoardService.addNewConsilBoard(data.getConsilBoardName(), principal.getName());
+    }
+
+    @PutMapping("clients")
+    public Client addClientToConsilBoard(@RequestBody Client client, Principal principal) {
+        String user = principal.getName();
+        return consilBoardService.addClientToConsilBoardArray(client, user);
+    }
+
+    @GetMapping("clients")
+    public Iterable<Client> getClientArray(Principal principal){
+        return consilBoardService.getClientArray(principal.getName());
     }
 
 }

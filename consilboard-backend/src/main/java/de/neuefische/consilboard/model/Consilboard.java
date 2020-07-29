@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,4 +18,6 @@ public class Consilboard {
     @Id
     private String id;
     private String consilBoardName;
-    private String user;}
+    private String user;
+    private List<Client> clientArray = new ArrayList<>();
+}
