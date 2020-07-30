@@ -6,8 +6,6 @@ import de.neuefische.consilboard.utils.RandomIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Optional;
 
 @Service

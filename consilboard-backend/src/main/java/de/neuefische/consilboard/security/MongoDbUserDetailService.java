@@ -2,7 +2,6 @@ package de.neuefische.consilboard.security;
 
 import de.neuefische.consilboard.db.UserDB;
 import de.neuefische.consilboard.model.ConsilBoardUser;
-import de.neuefische.consilboard.model.SignUpData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

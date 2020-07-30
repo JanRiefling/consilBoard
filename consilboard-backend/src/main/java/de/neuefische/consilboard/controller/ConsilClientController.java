@@ -2,7 +2,6 @@ package de.neuefische.consilboard.controller;
 
 
 import de.neuefische.consilboard.dto.AddClientDto;
-import de.neuefische.consilboard.dto.SearchDto;
 import de.neuefische.consilboard.model.Client;
 import de.neuefische.consilboard.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;

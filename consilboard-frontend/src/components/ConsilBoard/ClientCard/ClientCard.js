@@ -9,7 +9,6 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import {ClientDispatchContext} from "../../../context/clients/ClientContext";
-import {REMOVE_CLIENT_FROM_CONSILBOARD} from "../../../context/clients/client-actions";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 import {deleteClientsFromConsilBoard} from "../../../context/consilboard/consilBoard-action";
@@ -42,8 +41,6 @@ function ClientCard({ client }) {
                     </Typography>
                     <IconButton
                         onClick={() => {
-/*                            dispatch({type: REMOVE_CLIENT_FROM_CONSILBOARD, payload: client.id});
-                            console.log(client.clientname);*/
                             deleteClientsFromConsilBoard(dispatch, client)
                         }}
                     >

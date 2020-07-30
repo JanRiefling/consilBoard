@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
-/*import {removeClientFromDb} from "../../../utils/client-utils";*/
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import IconButton from '@material-ui/core/IconButton';
@@ -8,9 +7,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
-/*import {
-    ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
-} from "../../../context/clients/client-actions";*/
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import {putClientToConsilBoard} from "../../../utils/consilBoard-utils";
 
@@ -57,7 +53,6 @@ function ClientSearchCard({ client }) {
                         <DeleteIcon />
                     </IconButton>
                     <IconButton onClick={() => {
-                        /*dispatch({type: ADD_CLIENT_TO_CONSILBOARD_SUCCESS, payload: client});*/
                         handleAddClientToConsilBoard();
                         console.log(addToBoard);
 

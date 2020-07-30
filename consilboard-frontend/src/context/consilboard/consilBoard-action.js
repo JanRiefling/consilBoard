@@ -5,7 +5,7 @@ import {
     ADD_CONSILBOARD_SUCCESS,
     DELETE_CLIENT_FROM_LIST, DELETE_CLIENT_FROM_LIST_FAILED,
     DELETE_CLIENT_FROM_LIST_SUCCESS,
-    FETCH_CLIENTLIST,
+    FETCH_CLIENTLIST, FETCH_CLIENTLIST_FAILED,
     FETCH_CLIENTLIST_SUCCESS,
     FETCH_CONSILBOARD,
     FETCH_CONSILBOARD_FAILED,
@@ -17,7 +17,6 @@ import {
     putConsilBoard,
     removeClientFromConsilBoard
 } from "../../utils/consilBoard-utils";
-import {FETCH_CLIENTS_FAILED, REMOVE_CLIENT_FROM_CONSILBOARD} from "../clients/client-actions";
 
 export async function addConsilBoard(dispatch, consilBoardName) {
     dispatch({ type: ADD_CONSILBOARD });
@@ -45,7 +44,7 @@ export async function getConsilBoardClientsList(dispatch) {
         const clientList = await getConsilBoardClients();
         dispatch({type: FETCH_CLIENTLIST_SUCCESS, payload: clientList});
     } catch (error) {
-        dispatch({type: FETCH_CLIENTS_FAILED, payload: error});
+        dispatch({type: FETCH_CLIENTLIST_FAILED, payload: error});
     }
 
 }
