@@ -2,16 +2,17 @@ package de.neuefische.consilboard.controller;
 
 
 import de.neuefische.consilboard.dto.AddConsilBoardDto;
+import de.neuefische.consilboard.model.Client;
 import de.neuefische.consilboard.model.Consilboard;
 import de.neuefische.consilboard.service.ConsilBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.Optional;
+import java.util.List;
+
 
 
 @RestController
@@ -25,24 +26,33 @@ public class ConsilBoardController {
         this.consilBoardService = consilBoardService;
     }
 
-    @GetMapping
-    public Iterable<Consilboard> getAllUserRelatedConsilboards(){
 
-        return null;
-    }
+    @GetMapping()
+    public Consilboard getPersonalConsilBoard(Principal principal) {
+      return consilBoardService.getConsilBoard(principal.getName());
 
-    @GetMapping("{id}")
-    public Consilboard getPersonalConsilBoard(@PathVariable String id) {
-        Optional<Consilboard> consilboardOptional = consilBoardService.getConsilBoard(id);
-        if (consilboardOptional.isPresent()) {
-            return consilboardOptional.get();
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "idea with " + id + " not exists");
     }
 
     @PutMapping
-    public Consilboard addIdea(@RequestBody @Valid AddConsilBoardDto data, Principal principal){
+    public Consilboard addConsilboard(@RequestBody @Valid AddConsilBoardDto data, Principal principal){
         return consilBoardService.addNewConsilBoard(data.getConsilBoardName(), principal.getName());
+    }
+
+    @PutMapping("clientarray")
+    public Consilboard addClientToConsilBoard(@RequestBody Client client, Principal principal) {
+        String user = principal.getName();
+        return  consilBoardService.addClientToConsilBoardArray(client, user);
+    }
+
+    @GetMapping("clientarray")
+    public List<Client> getClientArray(Principal principal){
+        return consilBoardService.getClientIdArray(principal.getName());
+    }
+
+    @DeleteMapping("clientarray")
+    public Consilboard removeClientFromClientFromBoard(@RequestBody Client client, Principal principal) {
+        String user = principal.getName();
+        return consilBoardService.removeClientFromClientArray(client, user);
     }
 
 }

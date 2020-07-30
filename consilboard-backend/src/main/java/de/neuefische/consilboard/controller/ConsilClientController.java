@@ -26,8 +26,8 @@ public class ConsilClientController {
     }
 
     @GetMapping
-    public Iterable<Client> getAllClients(){
-        return clientService.getAll();
+    public Iterable<Client> getAllClients(Principal principal){
+        return clientService.getAll(principal.getName());
     }
 
     @GetMapping("{id}")
@@ -40,8 +40,9 @@ public class ConsilClientController {
     }
 
     @GetMapping("search/{query}")
-    public Iterable<Client> searchStudentByName(@PathVariable String query) {
-        return clientService.findClientsByName(query);
+    public Iterable<Client> searchStudentByName(@PathVariable String query, Principal principal) {
+        String user = principal.getName();
+        return clientService.findClientsByName(query, user);
     }
 
     @PutMapping

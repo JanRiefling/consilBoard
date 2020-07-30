@@ -8,10 +8,20 @@ export const FETCH_CONSILBOARD_FAILED = 'FETCH_CONSILBOARD_FAILED';
 export const ADD_CONSILBOARD = 'ADD_CONSILBOARD';
 export const ADD_CONSILBOARD_SUCCESS = 'ADD_CONSILBOARD_SUCCESS';
 export const ADD_CONSILBOARD_FAILED = 'ADD_CONSILBOARD_FAILED';
+export const FETCH_CLIENTLIST = 'FETCH_CLIENTLIST';
+export const FETCH_CLIENTLIST_SUCCESS = 'FETCH_CLIENTLIST_SUCCESS';
+export const FETCH_CLIENTLIST_FAILED = 'FETCH_CLIENTLIST_FAILED';
+export const DELETE_CLIENT_FROM_LIST = 'DELETE_CLIENT_FROM_LIST';
+export const DELETE_CLIENT_FROM_LIST_FAILED = 'DELETE_CLIENT_FROM_LIST_FAILED';
+export const DELETE_CLIENT_FROM_LIST_SUCCESS = 'DELETE_CLIENT_FROM_LIST_SUCCESS';
+
 
 const initialState = {
     fetchBoardStatus: undefined,
     addBoardStatus: undefined,
+    fetchClientListStatus: undefined,
+    consilboard: [],
+    clientList: [],
 };
 
 function consilBoardReducer(state, action) {
@@ -22,6 +32,21 @@ function consilBoardReducer(state, action) {
             return {...state, fetchBoardStatus: 'SUCCESS', consilboard: action.payload};
         case FETCH_CONSILBOARD_FAILED:
             return {...state, fetchBoardStatus: 'FAILED'};
+        case FETCH_CLIENTLIST:
+            return {...state, fetchClientListStatus: 'PENDING'};
+        case FETCH_CLIENTLIST_SUCCESS:
+            return {...state, fetchClientListStatus: 'SUCCESS', clientList: action.payload };
+        case FETCH_CLIENTLIST_FAILED:
+            return {...state, fetchClientListStatus: 'FAILED'};
+        case DELETE_CLIENT_FROM_LIST:
+            return {...state, deleteFromListStatus: 'PENDING'};
+        case DELETE_CLIENT_FROM_LIST_SUCCESS:
+            return {...state, clientList: state.clientList.filter((client) =>{
+                    return client === action.payload;
+                }),
+            };
+        case DELETE_CLIENT_FROM_LIST_FAILED:
+            return {...state, deleteFromListStatus: 'FAILED'};
         case ADD_CONSILBOARD:
             return { ...state, addBoardStatus: 'PENDING' };
         case ADD_CONSILBOARD_SUCCESS:

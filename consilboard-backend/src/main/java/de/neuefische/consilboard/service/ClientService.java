@@ -6,8 +6,6 @@ import de.neuefische.consilboard.utils.RandomIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Optional;
 
 @Service
@@ -22,8 +20,8 @@ public class ClientService {
         this.randomIdUtil = randomIdUtil;
     }
 
-    public Iterable<Client> getAll() {
-        return clientDB.findAll();
+    public Iterable<Client> getAll(String user) {
+        return clientDB.findAllByUser(user);
     }
 
     public Client add(String clientname, String user) {
@@ -42,7 +40,8 @@ public class ClientService {
         return clientDB.findById(id);
     }
 
-    public Iterable<Client> findClientsByName(String query) {
-        return clientDB.findClientsByClientnameIsStartingWith(query);
+    public Iterable<Client> findClientsByName(String query, String user) {
+
+        return clientDB.findClientsByClientnameStartingWithAndUser(query, user);
     }
 }

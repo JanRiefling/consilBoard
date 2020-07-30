@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {fetchClient} from "../utils/client-utils";
-import ClientCard from "../components/ClientCard/ClientCard";
+import ClientCard from "../components/ConsilBoard/ClientCard/ClientCard";
 
 function ClientDetails() {
     const { id } = useParams();

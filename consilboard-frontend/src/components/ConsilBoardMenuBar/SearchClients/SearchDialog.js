@@ -33,6 +33,7 @@ function SearchDialog({ open, handleClose }){
 
 
       useEffect(() => {
+
           fetchClientsByQuery(query)
               .then((data) => {
                   setSearchClients(data)

@@ -23,6 +23,7 @@ function ConsilBoardAppBar() {
     const dispatch = useContext(UserDispatchContext);
 
 
+
     function redirectToLoginPage() {
         return ( <Redirect to={'/login'} />);
     }
