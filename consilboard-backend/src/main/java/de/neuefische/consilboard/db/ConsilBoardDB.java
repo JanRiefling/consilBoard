@@ -3,6 +3,7 @@ package de.neuefische.consilboard.db;
 
 
 
+import de.neuefische.consilboard.model.Client;
 import de.neuefische.consilboard.model.Consilboard;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

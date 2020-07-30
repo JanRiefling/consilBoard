@@ -64,4 +64,13 @@ public class ConsilBoardService {
         return consilBoardDB.save(userConsilBoard);
     }
 
+    public Consilboard removeClientFromClientArray(Client client, String user) {
+        Consilboard userConsilBoard = consilBoardDB.findConsilboardByUser(user);
+        List<Client> clientIdList = userConsilBoard.getClientIdList();
+        if(clientIdList.contains(client)) {
+            clientIdList.remove(client);
+        }
+
+        return consilBoardDB.save(userConsilBoard);
+    }
 }

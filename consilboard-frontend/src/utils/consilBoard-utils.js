@@ -68,3 +68,22 @@ export function getConsilBoard() {
                 return response.json();
             });
         }
+
+export function removeClientFromConsilBoard(client) {
+    const token = getJWTToken();
+    return fetch('/api/consilboard/clientarray', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(client),
+    }).then((response) => {
+        if (response.status !== 200) {
+            throw new Error('invalid response');
+        }
+
+        return response.json();
+    });
+}
+

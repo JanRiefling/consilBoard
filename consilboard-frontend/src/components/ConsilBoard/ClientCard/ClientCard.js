@@ -12,6 +12,7 @@ import {ClientDispatchContext} from "../../../context/clients/ClientContext";
 import {REMOVE_CLIENT_FROM_CONSILBOARD} from "../../../context/clients/client-actions";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
+import {deleteClientsFromConsilBoard} from "../../../context/consilboard/consilBoard-action";
 
 const useStyles = makeStyles({
     root: {
@@ -41,8 +42,9 @@ function ClientCard({ client }) {
                     </Typography>
                     <IconButton
                         onClick={() => {
-                            dispatch({type: REMOVE_CLIENT_FROM_CONSILBOARD, payload: client.id});
-                            console.log(client.clientname);
+/*                            dispatch({type: REMOVE_CLIENT_FROM_CONSILBOARD, payload: client.id});
+                            console.log(client.clientname);*/
+                            deleteClientsFromConsilBoard(dispatch, client)
                         }}
                     >
                         <BackspaceOutlinedIcon />

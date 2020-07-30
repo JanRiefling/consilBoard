@@ -50,4 +50,10 @@ public class ConsilBoardController {
         return consilBoardService.getClientIdArray(principal.getName());
     }
 
+    @DeleteMapping("clientarray")
+    public Consilboard removeClientFromClientFromBoard(@RequestBody Client client, Principal principal) {
+        String user = principal.getName();
+        return consilBoardService.removeClientFromClientArray(client, user);
+    }
+
 }

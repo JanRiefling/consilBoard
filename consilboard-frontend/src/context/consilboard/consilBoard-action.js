@@ -2,11 +2,22 @@
 import {
     ADD_CONSILBOARD,
     ADD_CONSILBOARD_FAILED,
-    ADD_CONSILBOARD_SUCCESS, FETCH_CLIENTLIST, FETCH_CLIENTLIST_SUCCESS,
-    FETCH_CONSILBOARD, FETCH_CONSILBOARD_FAILED, FETCH_CONSILBOARD_SUCCESS
+    ADD_CONSILBOARD_SUCCESS,
+    DELETE_CLIENT_FROM_LIST, DELETE_CLIENT_FROM_LIST_FAILED,
+    DELETE_CLIENT_FROM_LIST_SUCCESS,
+    FETCH_CLIENTLIST,
+    FETCH_CLIENTLIST_SUCCESS,
+    FETCH_CONSILBOARD,
+    FETCH_CONSILBOARD_FAILED,
+    FETCH_CONSILBOARD_SUCCESS
 } from "./ConsilBoardProvider";
-import {getConsilBoard, getConsilBoardClients, putConsilBoard} from "../../utils/consilBoard-utils";
-import {FETCH_CLIENTS_FAILED} from "../clients/client-actions";
+import {
+    getConsilBoard,
+    getConsilBoardClients,
+    putConsilBoard,
+    removeClientFromConsilBoard
+} from "../../utils/consilBoard-utils";
+import {FETCH_CLIENTS_FAILED, REMOVE_CLIENT_FROM_CONSILBOARD} from "../clients/client-actions";
 
 export async function addConsilBoard(dispatch, consilBoardName) {
     dispatch({ type: ADD_CONSILBOARD });
@@ -29,12 +40,23 @@ export async function getPersonalConsilBoard(dispatch) {
 }
 
 export async function getConsilBoardClientsList(dispatch) {
-    dispatch({ type: FETCH_CLIENTLIST });
+    dispatch({type: FETCH_CLIENTLIST});
     try {
         const clientList = await getConsilBoardClients();
-        dispatch({ type: FETCH_CLIENTLIST_SUCCESS, payload: clientList});
+        dispatch({type: FETCH_CLIENTLIST_SUCCESS, payload: clientList});
     } catch (error) {
-        dispatch({ type: FETCH_CLIENTS_FAILED, payload: error });
+        dispatch({type: FETCH_CLIENTS_FAILED, payload: error});
     }
+
 }
+
+    export async function deleteClientsFromConsilBoard(dispatch, client) {
+        dispatch({type: DELETE_CLIENT_FROM_LIST});
+        try {
+            await removeClientFromConsilBoard(client);
+            dispatch({type: DELETE_CLIENT_FROM_LIST_SUCCESS, payload: client});
+        } catch(error) {
+            dispatch({type: DELETE_CLIENT_FROM_LIST_FAILED, payload: error});
+        }
+    }
 
