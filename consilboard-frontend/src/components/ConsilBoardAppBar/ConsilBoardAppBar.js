@@ -8,6 +8,7 @@ import {removeJWTToken} from "../../utils/jwt-utils";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {LOGOUT} from "../../context/user/UserContextProvider";
 import {Redirect} from "react-router-dom";
+import {ConsilBoardDispatchContext} from "../../context/consilboard/ConsilBoardContext";
 
 const useStyles = makeStyles(() => ({
     title: {
@@ -21,6 +22,8 @@ function ConsilBoardAppBar() {
     const classes = useStyles();
     const {authStatus, userData} = useContext(UserStateContext);
     const dispatch = useContext(UserDispatchContext);
+/*    const dispatchClients = useContext(ClientDispatchContext);
+    const dispatchBoard = useContext(ConsilBoardDispatchContext);*/
 
 
     function redirectToLoginPage() {

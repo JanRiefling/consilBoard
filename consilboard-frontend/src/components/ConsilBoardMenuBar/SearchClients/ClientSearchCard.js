@@ -8,10 +8,11 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
-import {
+/*import {
     ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
-} from "../../../context/clients/client-actions";
+} from "../../../context/clients/client-actions";*/
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import {putClientToConsilBoard} from "../../../utils/consilBoard-utils";
 
 
 const useStyles = makeStyles({
@@ -37,6 +38,12 @@ function ClientSearchCard({ client }) {
     const classes = useStyles();
 
 
+
+    function handleAddClientToConsilBoard() {
+        console.log(client)
+        putClientToConsilBoard(client);
+    }
+
     return (
         <Grid item xs={10} sm={6} lg={3}>
             <Card
@@ -50,8 +57,10 @@ function ClientSearchCard({ client }) {
                         <DeleteIcon />
                     </IconButton>
                     <IconButton onClick={() => {
-                        dispatch({type: ADD_CLIENT_TO_CONSILBOARD_SUCCESS, payload: client});
+                        /*dispatch({type: ADD_CLIENT_TO_CONSILBOARD_SUCCESS, payload: client});*/
+                        handleAddClientToConsilBoard();
                         console.log(addToBoard);
+
                     }}>
                         <AddCircleOutlineOutlinedIcon />
                     </IconButton>

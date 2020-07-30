@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -27,13 +28,10 @@ public class ConsilBoardController {
     }
 
 
-    @GetMapping("{id}")
-    public Consilboard getPersonalConsilBoard(@PathVariable String id) {
-        Optional<Consilboard> consilboardOptional = consilBoardService.getConsilBoard(id);
-        if (consilboardOptional.isPresent()) {
-            return consilboardOptional.get();
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "consilboard with " + id + " not exists");
+    @GetMapping()
+    public Consilboard getPersonalConsilBoard(Principal principal) {
+      return consilBoardService.getConsilBoard(principal.getName());
+
     }
 
     @PutMapping
@@ -41,15 +39,15 @@ public class ConsilBoardController {
         return consilBoardService.addNewConsilBoard(data.getConsilBoardName(), principal.getName());
     }
 
-    @PutMapping("clients")
-    public Client addClientToConsilBoard(@RequestBody Client client, Principal principal) {
+    @PutMapping("clientarray")
+    public Consilboard addClientToConsilBoard(@RequestBody Client client, Principal principal) {
         String user = principal.getName();
-        return consilBoardService.addClientToConsilBoardArray(client, user);
+        return  consilBoardService.addClientToConsilBoardArray(client, user);
     }
 
-    @GetMapping("clients")
-    public Iterable<Client> getClientArray(Principal principal){
-        return consilBoardService.getClientArray(principal.getName());
+    @GetMapping("clientarray")
+    public List<Client> getClientArray(Principal principal){
+        return consilBoardService.getClientIdArray(principal.getName());
     }
 
 }

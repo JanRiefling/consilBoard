@@ -12,9 +12,12 @@ import {ClientDispatchContext, ClientStateContext} from "../../../context/client
 import {addConsilBoard} from "../../../context/consilboard/consilBoard-action";
 
 export default function AddNewConsilBoard({ open, handleClose }) {
-    const [consilBoardName, setConsilBoardName] = useState('');
 
+
+    const [consilBoardName, setConsilBoardName] = useState('');
     const { addBoardStatus } = useContext(ClientStateContext);
+    const dispatch = useContext(ClientDispatchContext);
+
 
     useEffect(() => {
         if (addBoardStatus === 'SUCCESS') {
@@ -24,7 +27,7 @@ export default function AddNewConsilBoard({ open, handleClose }) {
         // eslint-disable-next-line
     }, [addBoardStatus]);
 
-    const dispatch = useContext(ClientDispatchContext);
+
 
     function handleSubmit() {
         addConsilBoard(dispatch, consilBoardName);
@@ -56,6 +59,7 @@ export default function AddNewConsilBoard({ open, handleClose }) {
                         margin="normal"
                         error={consilBoardName.length < 2}
                         helperText={'min length 2'}
+                        disabled={addBoardStatus === 'SUCCESS' && true}
                     />
                 </form>
                 {addBoardStatus === 'PENDING' && <CircularProgress />}

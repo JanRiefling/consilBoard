@@ -1,9 +1,8 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
-import {ClientDispatchContext, ClientStateContext} from "../../context/clients/ClientContext";
-import ClientCard from "../ClientCard/ClientCard";
-import {ADD_CLIENT_TO_CONSILBOARD, ADD_CLIENT_TO_CONSILBOARD_SUCCESS} from "../../context/clients/client-actions";
+import ClientCard from "./ClientCard/ClientCard";
+import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,20 +20,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 export default function ConsilBoard(){
 
-    const {clientsToBoard} = useContext(ClientStateContext);
-    const dispatch = useContext(ClientDispatchContext)
+    const {clientList} = useContext(ConsilBoardStateContext);
 
-    useEffect(() => {
-        dispatch({type: ADD_CLIENT_TO_CONSILBOARD})
-        if(ADD_CLIENT_TO_CONSILBOARD_SUCCESS) {
-            console.log(clientsToBoard);
-        }
-    }, [dispatch, clientsToBoard]);
 
+ console.log(clientList);
 
 
 
@@ -43,9 +34,9 @@ export default function ConsilBoard(){
     return (
         <div className={classes.root}>
             <GridList cellHeight={160} className={classes.gridList} cols={3}>
-                {clientsToBoard.map((client) => (
+                {clientList.map((client) => (
                 <ClientCard
-                    key= {client.id}
+                    key= {client}
                     client={client}
                 />
                 ))}

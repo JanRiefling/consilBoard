@@ -8,8 +8,8 @@ import BackspaceOutlinedIcon from '@material-ui/icons/BackspaceOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
-import {ClientDispatchContext} from "../../context/clients/ClientContext";
-import {REMOVE_CLIENT_FROM_CONSILBOARD} from "../../context/clients/client-actions";
+import {ClientDispatchContext} from "../../../context/clients/ClientContext";
+import {REMOVE_CLIENT_FROM_CONSILBOARD} from "../../../context/clients/client-actions";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 
