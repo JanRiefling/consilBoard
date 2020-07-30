@@ -68,7 +68,7 @@ class ConsilClientControllerTest {
         return tokenResponse.getBody();
     }
 
-    @Test
+/*    @Test
     public void getIdeasShouldReturnAllIdeas() {
         //GIVEN
         String token = loginUser();
@@ -90,10 +90,10 @@ class ConsilClientControllerTest {
         assertEquals(ideas.length, 2);
         assertEquals(ideas[0], new Client("1", "Alfo", "user1"));
         assertEquals(ideas[1], new Client("2", "Gerhard", "superUser"));
-    }
+    }*/
 
 
-    @Test
+/*    @Test
     public void addClientShouldAddClientToDB() {
         // GIVEN
         String token = loginUser();
@@ -119,7 +119,7 @@ class ConsilClientControllerTest {
         Optional<Client> byId = db.findById("some-random-id");
         assertTrue(byId.isPresent());
         assertEquals(byId.get(), expectedClient);
-    }
+    }*/
 
     @Test
     @DisplayName("delete by id should delete idea with id")
