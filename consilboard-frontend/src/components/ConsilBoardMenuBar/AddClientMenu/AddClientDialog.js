@@ -8,8 +8,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
-import {ClientDispatchContext, ClientStateContext} from "../../context/clients/ClientContext";
-import {addClient} from "../../context/clients/client-actions";
+import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
+import {addClient} from "../../../context/clients/client-actions";
 
 export default function AddClientDialog({ open, handleClose }) {
     const [clientname, setClientname] = useState('');

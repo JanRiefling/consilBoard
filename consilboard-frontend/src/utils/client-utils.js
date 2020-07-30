@@ -1,8 +1,8 @@
 import { getJWTToken } from './jwt-utils';
 
-/*export async function fetchAllClients() {
+export async function fetchAllClients() {
     const token = getJWTToken();
-    const response = await fetch('/api', {
+    const response = await fetch('/api/clients', {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -12,7 +12,35 @@ import { getJWTToken } from './jwt-utils';
         throw new Error(response.statusText);
     }
     return await response.json();
-}*/
+}
+
+export async function fetchClient(id) {
+    const token = getJWTToken();
+    const response = await fetch(`/api/clients/${id}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (response.status !== 200) {
+        throw new Error('something went wrong!');
+    }
+    return await response.json();
+}
+
+export async function fetchClientsByQuery(query) {
+    const token = getJWTToken();
+    const response = await fetch(`/api/clients/search/${query}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (response.status !== 200) {
+        throw new Error('something went wrong!');
+    }
+    return await response.json();
+}
 
 
 export function putClient(clientname) {
@@ -23,7 +51,7 @@ export function putClient(clientname) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ clientname: clientname }),
+        body: JSON.stringify({clientname: clientname}),
     }).then((response) => {
         if (response.status !== 200) {
             throw new Error('invalid response');
@@ -31,4 +59,18 @@ export function putClient(clientname) {
 
         return response.json();
     });
+}
+
+    export function removeClientFromDb(id) {
+        const token = getJWTToken();
+        return fetch(`/api/clients/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+
+
 }

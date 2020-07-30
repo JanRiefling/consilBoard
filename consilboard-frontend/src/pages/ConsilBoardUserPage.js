@@ -1,17 +1,12 @@
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import React, {/*useContext, useEffect,*/ useState} from "react";
-import AddClientDialog from "../components/AddClientDialog/AddClientDialog";
-/*import {ClientDispatchContext, ClientStateContext} from "../context/clients/ClientContext";*/
+import React from "react";
+import ConsilBoardMenuBar from "../components/ConsilBoardMenuBar/ConsilBoardMenuBar";
+import {getDecodedJWTToken} from "../utils/jwt-utils";
+import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
 
 
 function ConsilBoardUserPage(){
-
-    const [showAddDialog, setShowAddDialog] = useState(false);
-
-/*    const { client, addStatus } = useContext(ClientStateContext);
-    const dispatch = useContext(ClientDispatchContext);*/
 
     return (
         <Grid
@@ -19,20 +14,15 @@ function ConsilBoardUserPage(){
             alignContent="center"
             justify="center"
         >
-        <Typography>Hello User!</Typography>
-        <Button>ConsilBoard</Button>
-            <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => setShowAddDialog(true)}
-            >
-                Add Client
-            </Button>
-
-            <AddClientDialog
-                open={showAddDialog}
-                handleClose={() => setShowAddDialog(false)}
-            />
+            <Grid item >
+        <Typography>{'Hello ' + getDecodedJWTToken().sub}</Typography>
+            </Grid>
+            <Grid item >
+            <ConsilBoardMenuBar />
+            </Grid>
+            <Grid item>
+                <ConsilBoard />
+            </Grid>
         </Grid>
     );
 }
