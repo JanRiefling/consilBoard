@@ -1,5 +1,6 @@
 
 import {
+    ADD_CLIENT_TO_CLIENTLIST, ADD_CLIENT_TO_CLIENTLIST_FAILED, ADD_CLIENT_TO_CLIENTLIST_SUCCESS,
     ADD_CONSILBOARD,
     ADD_CONSILBOARD_FAILED,
     ADD_CONSILBOARD_SUCCESS,
@@ -13,7 +14,7 @@ import {
 } from "./ConsilBoardProvider";
 import {
     getConsilBoard,
-    getConsilBoardClients,
+    getConsilBoardClients, putClientToConsilBoard,
     putConsilBoard,
     removeClientFromConsilBoard
 } from "../../utils/consilBoard-utils";
@@ -56,6 +57,16 @@ export async function getConsilBoardClientsList(dispatch) {
             dispatch({type: DELETE_CLIENT_FROM_LIST_SUCCESS, payload: client});
         } catch(error) {
             dispatch({type: DELETE_CLIENT_FROM_LIST_FAILED, payload: error});
+        }
+    }
+
+    export async function addClientToConsilBoard(dispatch, client) {
+        dispatch({type: ADD_CLIENT_TO_CLIENTLIST});
+        try {
+            await putClientToConsilBoard(client);
+            dispatch({type: ADD_CLIENT_TO_CLIENTLIST_SUCCESS, payload: client});
+        } catch(error) {
+            dispatch({type: ADD_CLIENT_TO_CLIENTLIST_FAILED, payload: error});
         }
     }
 

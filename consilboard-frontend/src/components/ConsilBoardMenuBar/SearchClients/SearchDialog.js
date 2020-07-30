@@ -17,9 +17,7 @@ import {fetchClientsByQuery} from "../../../utils/client-utils";
 
 function SearchDialog({ open, handleClose }){
 
-
     const {clients, fetchStatus} = useContext(ClientStateContext);
-
     const dispatch = useContext(ClientDispatchContext);
     const [allClients, setAllClients] = useState(false);
     const [query, setQuery] = useState('');
@@ -33,13 +31,13 @@ function SearchDialog({ open, handleClose }){
 
 
       useEffect(() => {
-
-          fetchClientsByQuery(query)
-              .then((data) => {
-                  setSearchClients(data)
-                  console.log(data)
-              })
-              .catch((e) => console.error(e));
+          if(query !== '') {
+              fetchClientsByQuery(query)
+                  .then((data) => {
+                      setSearchClients(data)
+                  })
+                  .catch((e) => console.error(e));
+          }
       },[query]);
 
     function showAllClients() {
@@ -69,7 +67,6 @@ function SearchDialog({ open, handleClose }){
                         value={query}
                         onChange={(event) => {
                             setQuery(event.target.value)
-                            console.log(event);
                         }}
                         margin="normal"
                         /*error={}*/

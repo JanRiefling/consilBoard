@@ -8,10 +8,10 @@ import BackspaceOutlinedIcon from '@material-ui/icons/BackspaceOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
-import {ClientDispatchContext} from "../../../context/clients/ClientContext";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 import {deleteClientsFromConsilBoard} from "../../../context/consilboard/consilBoard-action";
+import {ConsilBoardDispatchContext} from "../../../context/consilboard/ConsilBoardContext";
 
 const useStyles = makeStyles({
     root: {
@@ -27,7 +27,7 @@ function ClientCard({ client }) {
 
     const classes = useStyles();
     const history = useHistory();
-    const dispatch = useContext(ClientDispatchContext);
+    const dispatch = useContext(ConsilBoardDispatchContext);
 
 
     return (
@@ -41,7 +41,7 @@ function ClientCard({ client }) {
                     </Typography>
                     <IconButton
                         onClick={() => {
-                            deleteClientsFromConsilBoard(dispatch, client)
+                            deleteClientsFromConsilBoard(dispatch, client);
                         }}
                     >
                         <BackspaceOutlinedIcon />

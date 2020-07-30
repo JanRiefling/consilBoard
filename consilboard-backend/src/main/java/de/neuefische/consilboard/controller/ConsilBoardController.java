@@ -39,7 +39,7 @@ public class ConsilBoardController {
     }
 
     @PutMapping("clientarray")
-    public Consilboard addClientToConsilBoard(@RequestBody Client client, Principal principal) {
+    public List<Client> addClientToConsilBoard(@RequestBody Client client, Principal principal) {
         String user = principal.getName();
         return  consilBoardService.addClientToConsilBoardArray(client, user);
     }
@@ -50,7 +50,7 @@ public class ConsilBoardController {
     }
 
     @DeleteMapping("clientarray")
-    public Consilboard removeClientFromClientFromBoard(@RequestBody Client client, Principal principal) {
+    public List<Client> removeClientFromClientFromBoard(@RequestBody Client client, Principal principal) {
         String user = principal.getName();
         return consilBoardService.removeClientFromClientArray(client, user);
     }

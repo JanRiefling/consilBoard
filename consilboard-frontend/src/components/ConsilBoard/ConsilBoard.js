@@ -22,14 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ConsilBoard(){
 
-    const {clientList} = useContext(ConsilBoardStateContext);
-
-
- console.log(clientList);
-
-
-
     const classes = useStyles();
+    const {clientList} = useContext(ConsilBoardStateContext);
 
     return (
         <div className={classes.root}>

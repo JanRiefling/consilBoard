@@ -49,7 +49,7 @@ public class ConsilBoardService {
         return userConsilBoard.getClientIdList();
     }
 
-    public Consilboard addClientToConsilBoardArray(Client client, String user) throws IllegalArgumentException {
+    public List<Client> addClientToConsilBoardArray(Client client, String user) throws IllegalArgumentException {
         Consilboard userConsilBoard = consilBoardDB.findConsilboardByUser(user);
         List<Client> newIdList = userConsilBoard.getClientIdList();
         if(newIdList.size() >= 0) {
@@ -57,18 +57,22 @@ public class ConsilBoardService {
                 throw new IllegalArgumentException("Client is already on Board");
             }
             newIdList.add(client);
+            consilBoardDB.save(userConsilBoard);
         }
 
-        return consilBoardDB.save(userConsilBoard);
+
+        return newIdList;
     }
 
-    public Consilboard removeClientFromClientArray(Client client, String user) {
+    public List<Client> removeClientFromClientArray(Client client, String user) {
         Consilboard userConsilBoard = consilBoardDB.findConsilboardByUser(user);
         List<Client> clientIdList = userConsilBoard.getClientIdList();
         if(clientIdList.contains(client)) {
             clientIdList.remove(client);
         }
 
-        return consilBoardDB.save(userConsilBoard);
+        consilBoardDB.save(userConsilBoard);
+
+        return clientIdList;
     }
 }
