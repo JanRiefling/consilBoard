@@ -13,15 +13,18 @@ import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 import {deleteClientsFromConsilBoard} from "../../../context/consilboard/consilBoard-action";
 import {ConsilBoardDispatchContext} from "../../../context/consilboard/ConsilBoardContext";
 
-const useStyles = makeStyles({
-    root: {
+const useStyles = makeStyles((theme) => ({
+    clientCard: {
         margin: 10,
-        backgroundColor: 'lightgray',
+        backgroundColor: 'white',
+        borderColor: "green",
+        borderWidth: 10,
+        width: "100%",
         '&:hover': {
             backgroundColor: 'rgba(7,177,77,0.42)',
         },
     },
-});
+}));
 
 function ClientCard({ client }) {
 
@@ -31,14 +34,17 @@ function ClientCard({ client }) {
 
 
     return (
-        <Grid item xs={10} sm={6} lg={3}>
-            <Card
-                className={classes.root}
-            >
+        <Grid item className={classes.clientCard}>
+
+            <Card>
+                <Grid container direction="row" wrap="nowrap">
                 <CardContent>
+                    <Grid item>
                     <Typography variant="body1" component="p">
                         {client.clientname}
                     </Typography>
+                    </Grid>
+                    <Grid item>
                     <IconButton
                         onClick={() => {
                             deleteClientsFromConsilBoard(dispatch, client);
@@ -57,7 +63,9 @@ function ClientCard({ client }) {
                     <IconButton>
                         <NoteAddOutlinedIcon />
                     </IconButton>
+                        </ Grid>
                 </CardContent>
+                </Grid>
             </Card>
         </Grid>
     );

@@ -1,21 +1,30 @@
 import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
 import ClientCard from "./ClientCard/ClientCard";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
+import Grid from "@material-ui/core/Grid";
+import BackgroundBoard from "../../images/BackgroundBoardThree.png";
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    consilBoard: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
+        borderRadius: 5,
+        height: "auto",
+        backgroundImage: `url(${BackgroundBoard})`,
+        backgroundRepeat: "repeat",
+        backgroundPosition: "center",
+        borderColor: "black",
+        borderWidth: "1px",
+        boxShadow: ""
+
     },
     gridList: {
-        width: 500,
-        height: 450,
+        width: "80%",
+        height: "80%",
     },
 }));
 
@@ -26,15 +35,15 @@ export default function ConsilBoard(){
     const {clientList} = useContext(ConsilBoardStateContext);
 
     return (
-        <div className={classes.root}>
-            <GridList cellHeight={160} className={classes.gridList} cols={3}>
+        <Grid item className={classes.consilBoard}>
                 {clientList.map((client) => (
-                <ClientCard
-                    key= {client}
-                    client={client}
-                />
+                    <Grid item key={client} >
+                        <ClientCard
+                            client={client}
+                        />
+                    </Grid>
                 ))}
-            </GridList>
-        </div>
+
+        </Grid>
     );
 }

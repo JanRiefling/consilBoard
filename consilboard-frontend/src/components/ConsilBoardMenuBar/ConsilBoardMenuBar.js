@@ -9,8 +9,32 @@ import SearchDialog from "./SearchClients/SearchDialog";
 import AddNewConsilBoardDialog from "./AddNewConsilBoard/AddNewConsilBoardDialog";
 import {FETCH_CONSILBOARD_SUCCESS} from "../../context/consilboard/ConsilBoardProvider";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
+/*
+import makeStyles from "@material-ui/core/styles/makeStyles";
+*/
+
+
+/*const useStyles = makeStyles(() => ({
+    logo: {
+        padding: 3,
+        marginRight: "auto",
+    },
+    logoutButton: {
+        marginLeft: "auto",
+    },
+    appBar: {
+        backgroundColor: 'white',
+        margin: "auto",
+    },
+}));*/
+
+
+
+
 
 function ConsilBoardMenuBar() {
+
+    /*const classes = useStyles();*/
     const [showAddDialog, setShowAddDialog] = useState(false);
     /*const [showRemoveDialog, setShowRemoveDialog] = useState(false);*/
     const [showSearchDialog, setShowSearchDialog] = useState(false);
@@ -27,11 +51,7 @@ function ConsilBoardMenuBar() {
 
 
     return (
-        <Grid
-            container
-            alignContent="center"
-            justify="center"
-        >
+        <Grid item>
 {/*            <Button
                 variant="outlined"
                 color="primary"
@@ -73,11 +93,11 @@ function ConsilBoardMenuBar() {
                 handleClose={() => setShowSearchDialog(false)}
             />
 
-            {fetchBoardStatus === 'FAILED' || fetchBoardStatus === 'PENDING'} <Button
+            {!newConsilBoard && <>
+            <Button
                 variant="outlined"
                 color="primary"
                 onClick={() => setShowConsilBoardDialog(true)}
-                disabled={newConsilBoard}
             >
 
                 Create ConsilBoard!
@@ -87,6 +107,7 @@ function ConsilBoardMenuBar() {
                 open={showConsilBoardDialog}
                 handleClose={() => setShowConsilBoardDialog(false)}
             />
+            </>}
 
         </Grid>
     );

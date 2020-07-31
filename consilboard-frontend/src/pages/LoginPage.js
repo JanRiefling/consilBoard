@@ -16,10 +16,20 @@ import { getDecodedJWTToken, setJWTToken } from '../utils/jwt-utils';
 import { Grid, makeStyles } from '@material-ui/core';
 import SignUpForm from "../components/SignUp/SignUpForm";
 import SignUpProvider from "../context/user/SignUpProvider";
+import consilBoardTheme from "../styling/muiTheme";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
         paddingTop: theme.spacing(4),
+        borderStyle: "dotted",
+        borderColor: consilBoardTheme.palette.primary.main,
+        borderRadius: 10,
+        height: "30rem",
+        marginTop: "5rem"
+    },
+    textField: {
+        margin: 5
     },
 }));
 
@@ -56,27 +66,39 @@ function LoginPage() {
             container
             alignContent="center"
             justify="center"
+            direction="column"
         >
             <Grid item>
-                <div>
+                <Typography>
+                    Login to your ConsilBoard
+                </Typography>
+            </Grid>
+            <Grid item>
+                <div className={classes.textField}>
                     <TextField
                         label="Username"
                         type="text"
                         value={username}
+                        variant="outlined"
                         onChange={(event) => setUsername(event.target.value)}
                     />
                 </div>
-                <div>
+                <div className={classes.textField}>
                     <TextField
                         label="Password"
                         type="password"
                         value={password}
+                        variant="outlined"
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </div>
-                <Button onClick={login}>Login</Button>
+
             </Grid>
+
+            <Grid item>
+                <Button onClick={login}>Login</Button>
                 <SignUpForm />
+            </Grid>
         </Grid>
         </SignUpProvider>
     );

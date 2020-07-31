@@ -6,13 +6,15 @@ import UserContextProvider, {
 } from './context/user/UserContextProvider';
 import { UserDispatchContext } from './context/user/UserContext';
 import { getDecodedJWTToken, isJWTTokenValid } from './utils/jwt-utils';
-import { Container } from '@material-ui/core';
+import {Container, MuiThemeProvider} from '@material-ui/core';
 import ConsilBoardUserPage from "./pages/ConsilBoardUserPage";
 import ConsilBoardAppBar from "./components/ConsilBoardAppBar/ConsilBoardAppBar";
 import ClientProvider from "./context/clients/ClientProvider";
 import PrivateRoute from "./pages/PrivateRoute";
 import ClientDetails from "./pages/ClientDetails";
 import ConsilBoardProvider from "./context/consilboard/ConsilBoardProvider";
+import consilBoardTheme from "./styling/muiTheme";
+
 
 function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -47,13 +49,15 @@ function Navigation() {
 
 function App() {
     return (
-        <UserContextProvider>
-            <ClientProvider>
-                <ConsilBoardProvider>
-                    <Navigation />
-                </ConsilBoardProvider>
-            </ClientProvider>
-        </UserContextProvider>
+        <MuiThemeProvider theme={consilBoardTheme}>
+            <UserContextProvider>
+                <ClientProvider>
+                    <ConsilBoardProvider>
+                        <Navigation />
+                    </ConsilBoardProvider>
+                </ClientProvider>
+            </UserContextProvider>
+        </MuiThemeProvider>
     );
 }
 

@@ -41,10 +41,7 @@ function SearchDialog({ open, handleClose }){
       },[query]);
 
     function showAllClients() {
-        setAllClients(true);
-        if(allClients === true) {
-            setAllClients(false);
-        }
+        setAllClients(!allClients);
     }
 
     return (
@@ -59,7 +56,7 @@ function SearchDialog({ open, handleClose }){
             <DialogTitle id="form-dialog-title">Find Clients</DialogTitle>
             <DialogContent>
                 <DialogContentText>Find a Client</DialogContentText>
-                <form>
+                {!allClients && <form>
                     <TextField
                         fullWidth={true}
                         multiline={true}
@@ -72,7 +69,7 @@ function SearchDialog({ open, handleClose }){
                         /*error={}*/
                         helperText={'min length 2'}
                     />
-                </form>
+                </form>}
 
             </DialogContent>
             <DialogActions>
