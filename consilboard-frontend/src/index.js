@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <MuiThemeProvider theme={myTheme}>
+        <App />
+      </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
