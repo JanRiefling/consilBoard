@@ -22,15 +22,36 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
         paddingTop: theme.spacing(4),
-        borderStyle: "dotted",
+        borderStyle: "solid",
         borderColor: consilBoardTheme.palette.primary.main,
+        borderWidth: "1px",
         borderRadius: 10,
         height: "30rem",
-        marginTop: "5rem"
+        marginTop: "5rem",
+        maxWidth: "500px",
+        marginLeft: "auto",
+        marginRight: "auto",
     },
     textField: {
-        margin: 5
+        padding: 5
     },
+    welcomeLogin: {
+        colour: consilBoardTheme.palette.info.light,
+        fontSize: "1.2rem",
+        padding: "1rem"
+    },
+    loginButton: {
+        colour: consilBoardTheme.palette.primary.main,
+    },
+    signUpButton: {
+        colour: consilBoardTheme.palette.primary.main,
+    },
+    textGrid: {
+        backgroundColor: consilBoardTheme.palette.primary.light,
+        width: "100%",
+        height: "auto",
+    }
+
 }));
 
 function LoginPage() {
@@ -67,10 +88,11 @@ function LoginPage() {
             alignContent="center"
             justify="center"
             direction="column"
+            spacing={4}
         >
-            <Grid item>
-                <Typography>
-                    Login to your ConsilBoard
+            <Grid item className={classes.textGrid}>
+                <Typography className={classes.welcomeLogin}>
+                    LOGIN TO YOUR BOARD
                 </Typography>
             </Grid>
             <Grid item>
@@ -96,7 +118,9 @@ function LoginPage() {
             </Grid>
 
             <Grid item>
-                <Button onClick={login}>Login</Button>
+                <Button onClick={login} variant="outlined" color="primary">Login</Button>
+            </Grid>
+            <Grid item>
                 <SignUpForm />
             </Grid>
         </Grid>

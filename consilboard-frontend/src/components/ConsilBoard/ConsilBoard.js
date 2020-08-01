@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ClientCard from "./ClientCard/ClientCard";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
 import Grid from "@material-ui/core/Grid";
-import BackgroundBoard from "../../images/BackgroundBoardThree.png";
+import BackgroundBoard from "../../images/BackgroundBoardFour.png";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -13,18 +13,20 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         borderRadius: 5,
-        height: "auto",
+/*
         backgroundImage: `url(${BackgroundBoard})`,
+*/
         backgroundRepeat: "repeat",
         backgroundPosition: "center",
         borderColor: "black",
         borderWidth: "1px",
-        boxShadow: ""
+        padding: "1rem",
+        minHeight: "20rem",
+
 
     },
-    gridList: {
-        width: "80%",
-        height: "80%",
+    cardSetting: {
+        padding: "1rem",
     },
 }));
 
@@ -37,7 +39,7 @@ export default function ConsilBoard(){
     return (
         <Grid item className={classes.consilBoard}>
                 {clientList.map((client) => (
-                    <Grid item key={client} >
+                    <Grid item key={client} className={classes.cardSetting} >
                         <ClientCard
                             client={client}
                         />

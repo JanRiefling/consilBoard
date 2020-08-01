@@ -14,7 +14,9 @@ import {ConsilBoardDispatchContext} from "../../../context/consilboard/ConsilBoa
 const useStyles = makeStyles({
     root: {
         margin: 5,
-        backgroundColor: 'lightgray',
+        backgroundColor: 'white',
+        borderStyle: 'solid',
+        borderWidth: '1px',
         '&:hover': {
             backgroundColor: 'rgb(7, 177, 77, 0.42)',
         },

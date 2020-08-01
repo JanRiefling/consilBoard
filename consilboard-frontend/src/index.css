@@ -1,13 +1,48 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
+
+@font-face {
+  font-family: 'AlegraySansRegular';
+  src: local('AlegrayaSansRegular'), url(fonts/AlegreyaSans/AlegreyaSans-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'AlegraySansMedium';
+  src: local('AlegrayaSansMedium'), url(fonts/AlegreyaSans/AlegreyaSans-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'AlegraySansBlack';
+  src: local('AlegrayaSansBlack'), url(fonts/AlegreyaSans/AlegreyaSansBlack.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'AlegraySansBold';
+  src: local('AlegrayaSansBold'), url(fonts/AlegreyaSans/AlegreyaSans-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'AlegraySansThin';
+  src: local('AlegrayaSansThin'), url(fonts/AlegreyaSans/AlegreyaSans-Thin.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'SourceSansLight';
+  src: local('SourceSansProLight'), url(fonts/SourceSansPro/SourceSansPro-Light.woff) format('woff');
+}
+
+
+
+
+

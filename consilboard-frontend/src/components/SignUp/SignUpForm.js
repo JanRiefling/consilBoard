@@ -10,11 +10,47 @@ import {performSignUp} from "../../utils/auth-utils";
 import {SignUpUserDispatchContext, SignUpUserStateContext} from "../../context/user/SignUpContext";
 import {SIGN_UP, SIGN_UP_FAILED, SIGN_UP_SUCCESS} from "../../context/user/SignUpProvider";
 import {Redirect} from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import {makeStyles} from "@material-ui/core";
+import consilBoardTheme from "../../styling/muiTheme";
+import Typography from "@material-ui/core/Typography";
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+
+    signUpButton: {
+        fontSize: 13,
+        '&:hover': {
+            backgroundColor: 'rgb(7, 177, 77, 0.42)',
+            style: "pointer"
+        },
+    },
+
+    welcomeLogin: {
+        colour: "white",
+        fontSize: "1.2rem",
+        padding: "1rem"
+    },
+    loginButton: {
+        colour: consilBoardTheme.palette.primary.main,
+    },
+    textGrid: {
+        backgroundColor: consilBoardTheme.palette.primary.light,
+        width: "100%",
+        height: "auto",
+    }
+
+}));
+
+
+
 
 function SignUpForm(){
 
     const [open, setOpen] = React.useState(false);
-
+    const classes = useStyles();
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -57,8 +93,8 @@ function SignUpForm(){
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                SignUp
+            <Button onClick={handleClickOpen} className={classes.signUpButton}>
+               Not registered? Sign Up!
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="signup-dialog-title">
                 <DialogTitle id="signup-dialog-title">SignUp</DialogTitle>

@@ -23,6 +23,7 @@ const useStyles = makeStyles(() => ({
     appBar: {
         backgroundColor: 'white',
         margin: "auto",
+        boxShadow: "none",
     },
 }));
 
@@ -47,7 +48,7 @@ function ConsilBoardAppBar() {
             <Toolbar>
                 <img className={classes.logo}
                     onClick={() => console.log('onClick')}
-                    src={require("../../images/LogoLargerGreener.png")}
+                    src={require("../../images/ConsilBoardLogo.png")}
                     alt={"Consil Board Logo, few squares and text"}
                 />
                 {authStatus === 'SUCCESS' && (

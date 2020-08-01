@@ -9,12 +9,10 @@ import SearchDialog from "./SearchClients/SearchDialog";
 import AddNewConsilBoardDialog from "./AddNewConsilBoard/AddNewConsilBoardDialog";
 import {FETCH_CONSILBOARD_SUCCESS} from "../../context/consilboard/ConsilBoardProvider";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
-/*
 import makeStyles from "@material-ui/core/styles/makeStyles";
-*/
 
 
-/*const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(() => ({
     logo: {
         padding: 3,
         marginRight: "auto",
@@ -26,7 +24,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
         backgroundColor: 'white',
         margin: "auto",
     },
-}));*/
+}));
 
 
 
@@ -34,7 +32,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 function ConsilBoardMenuBar() {
 
-    /*const classes = useStyles();*/
+    const classes = useStyles();
     const [showAddDialog, setShowAddDialog] = useState(false);
     /*const [showRemoveDialog, setShowRemoveDialog] = useState(false);*/
     const [showSearchDialog, setShowSearchDialog] = useState(false);

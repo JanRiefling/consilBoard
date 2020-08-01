@@ -5,6 +5,8 @@ import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
 import {getConsilBoardClientsList, getPersonalConsilBoard} from "../context/consilboard/consilBoard-action";
 import {ConsilBoardDispatchContext} from "../context/consilboard/ConsilBoardContext";
 import {makeStyles} from "@material-ui/core/styles";
+import consilBoardTheme from "../styling/muiTheme";
+import Paper from "@material-ui/core/Paper";
 
 
 
@@ -15,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     },
     consilBoardSetting: {
         padding: "0.3rem",
-        /*boxShadow: '18px 20px 26px -17px rgba(0,0,0,0.35)',*/
+        borderRadius: 5,
+        /*boxShadow: '0px 10px 12px -10px rgba(0,0,0,0.35)',*/
     },
 }));
 
@@ -40,7 +43,9 @@ function ConsilBoardUserPage(){
                 <ConsilBoardMenuBar />
             </Grid>
             <Grid item className={classes.consilBoardSetting}>
+                <Paper elevation={1}>
                 <ConsilBoard />
+                </Paper>
             </Grid>
         </Grid>
     );

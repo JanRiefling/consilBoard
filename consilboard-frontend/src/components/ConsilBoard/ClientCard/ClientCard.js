@@ -12,13 +12,17 @@ import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 import {deleteClientsFromConsilBoard} from "../../../context/consilboard/consilBoard-action";
 import {ConsilBoardDispatchContext} from "../../../context/consilboard/ConsilBoardContext";
+import consilBoardTheme from "../../../styling/muiTheme";
 
 const useStyles = makeStyles((theme) => ({
     clientCard: {
         margin: 10,
         backgroundColor: 'white',
-        borderColor: "green",
-        borderWidth: 10,
+        borderColor: consilBoardTheme.palette.primary.dark,
+        borderWidth: 2,
+        borderStyle: "solid",
+        borderRadius: 5,
+        boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.35)',
         width: "100%",
         '&:hover': {
             backgroundColor: 'rgba(7,177,77,0.42)',
@@ -37,14 +41,18 @@ function ClientCard({ client }) {
         <Grid item className={classes.clientCard}>
 
             <Card>
-                <Grid container direction="row" wrap="nowrap">
-                <CardContent>
+                <Grid container>
                     <Grid item>
+                        <CardContent>
                     <Typography variant="body1" component="p">
                         {client.clientname}
                     </Typography>
+                </CardContent>
                     </Grid>
                     <Grid item>
+                        <Grid container direction="column">
+                            <CardContent>
+                                <Grid item>
                     <IconButton
                         onClick={() => {
                             deleteClientsFromConsilBoard(dispatch, client);
@@ -52,19 +60,29 @@ function ClientCard({ client }) {
                     >
                         <BackspaceOutlinedIcon />
                     </IconButton>
+                                </Grid>
+                                <Grid item>
                     <IconButton
                         onClick={() => history.push(`/client/${client.id}`)}
                     >
                         <InfoOutlinedIcon />
                     </IconButton>
+                                </Grid>
+                                <Grid item>
                     <IconButton>
                         <CreateOutlinedIcon />
                     </IconButton>
+                                </Grid>
+                                <Grid item>
                     <IconButton>
                         <NoteAddOutlinedIcon />
                     </IconButton>
-                        </ Grid>
-                </CardContent>
+                                </Grid>
+                                </ CardContent>
+                    </Grid>
+                    </ Grid>
+
+
                 </Grid>
             </Card>
         </Grid>
