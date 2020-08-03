@@ -1,8 +1,8 @@
-import { ClientStateContext, ClientDispatchContext } from './ClientContext';
-import React, { useReducer } from 'react';
+import {ClientDispatchContext, ClientStateContext} from './ClientContext';
+import React, {useReducer} from 'react';
 import clientReducer from './clientReducer';
 
-export default function ClientProvider({ children }) {
+export default function ClientProvider({children}) {
     const [state, dispatch] = useReducer(clientReducer, {
         clients: [],
         clientsToBoard: [],

@@ -1,4 +1,4 @@
-import { getJWTToken } from './jwt-utils';
+import {getJWTToken} from './jwt-utils';
 
 export async function fetchAllClients() {
     const token = getJWTToken();
@@ -61,16 +61,15 @@ export function putClient(clientname) {
     });
 }
 
-    export function removeClientFromDb(id) {
-        const token = getJWTToken();
-        return fetch(`/api/clients/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
+export function removeClientFromDb(id) {
+    const token = getJWTToken();
+    return fetch(`/api/clients/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+    });
 
 
 }

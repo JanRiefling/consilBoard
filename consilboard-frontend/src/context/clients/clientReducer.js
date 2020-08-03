@@ -2,11 +2,14 @@ import {
     ADD_CLIENT,
     ADD_CLIENT_FAILED,
     ADD_CLIENT_SUCCESS,
-    ADD_CLIENT_TO_CONSILBOARD, ADD_CLIENT_TO_CONSILBOARD_FAILED, ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
+    ADD_CLIENT_TO_CONSILBOARD,
+    ADD_CLIENT_TO_CONSILBOARD_FAILED,
+    ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
     DELETE_CLIENT_SUCCESS,
     FETCH_CLIENTS,
     FETCH_CLIENTS_FAILED,
-    FETCH_CLIENTS_SUCCESS, REMOVE_CLIENT_FROM_CONSILBOARD
+    FETCH_CLIENTS_SUCCESS,
+    REMOVE_CLIENT_FROM_CONSILBOARD
 } from './client-actions';
 
 export default function clientReducer(state, action) {
@@ -18,17 +21,17 @@ export default function clientReducer(state, action) {
         case FETCH_CLIENTS_FAILED:
             return {...state, fetchStatus: 'FAILED'};
         case ADD_CLIENT:
-            return { ...state, addStatus: 'PENDING' };
+            return {...state, addStatus: 'PENDING'};
         case ADD_CLIENT_SUCCESS:
-            return { ...state, addStatus: 'SUCCESS', clients: [...state.clients, action.payload],};
+            return {...state, addStatus: 'SUCCESS', clients: [...state.clients, action.payload],};
         case ADD_CLIENT_FAILED:
-            return { ...state, addStatus: 'FAILED' };
+            return {...state, addStatus: 'FAILED'};
         case ADD_CLIENT_TO_CONSILBOARD:
-            return { ...state, addToBoardStatus: 'PENDING' };
+            return {...state, addToBoardStatus: 'PENDING'};
         case ADD_CLIENT_TO_CONSILBOARD_SUCCESS:
-            return { ...state, addToBoardStatus: 'SUCCESS', clientsToBoard: [...state.clientsToBoard, action.payload],};
+            return {...state, addToBoardStatus: 'SUCCESS', clientsToBoard: [...state.clientsToBoard, action.payload],};
         case ADD_CLIENT_TO_CONSILBOARD_FAILED:
-            return { ...state, addAddToBoardStatus: 'FAILED' };
+            return {...state, addAddToBoardStatus: 'FAILED'};
         case REMOVE_CLIENT_FROM_CONSILBOARD:
             return {
                 ...state, clientsToBoard: state.clientsToBoard.filter((client) => {

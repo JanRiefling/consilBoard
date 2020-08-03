@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -11,11 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
 import {addConsilBoard} from "../../../context/consilboard/consilBoard-action";
 
-export default function AddNewConsilBoard({ open, handleClose }) {
+export default function AddNewConsilBoard({open, handleClose}) {
 
 
     const [consilBoardName, setConsilBoardName] = useState('');
-    const { addBoardStatus } = useContext(ClientStateContext);
+    const {addBoardStatus} = useContext(ClientStateContext);
     const dispatch = useContext(ClientDispatchContext);
 
 
@@ -26,7 +26,6 @@ export default function AddNewConsilBoard({ open, handleClose }) {
         }
         // eslint-disable-next-line
     }, [addBoardStatus]);
-
 
 
     function handleSubmit() {
@@ -62,7 +61,7 @@ export default function AddNewConsilBoard({ open, handleClose }) {
                         disabled={addBoardStatus === 'SUCCESS' && true}
                     />
                 </form>
-                {addBoardStatus === 'PENDING' && <CircularProgress />}
+                {addBoardStatus === 'PENDING' && <CircularProgress/>}
                 {addBoardStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
                         Add Board client failed

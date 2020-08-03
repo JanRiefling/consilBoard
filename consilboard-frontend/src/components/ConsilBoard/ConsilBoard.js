@@ -1,46 +1,46 @@
 import React, {useContext} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
+import {makeStyles} from '@material-ui/core/styles';
 import ClientCard from "./ClientCard/ClientCard";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
-
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    consilBoard: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
+        borderRadius: 5,
+        borderColor: "black",
+        borderWidth: "1px",
+        padding: "2rem",
+        minHeight: "80vh",
+        minWidth: "80vw",
     },
-    gridList: {
-        width: 500,
-        height: 450,
+
+    consilCard: {
+        padding: 20,
+        height: "5%",
+        width: "10%"
     },
 }));
 
 
-export default function ConsilBoard(){
-
-    const {clientList} = useContext(ConsilBoardStateContext);
-
-
- console.log(clientList);
-
-
+export default function ConsilBoard() {
 
     const classes = useStyles();
+    const {clientList} = useContext(ConsilBoardStateContext);
 
     return (
-        <div className={classes.root}>
-            <GridList cellHeight={160} className={classes.gridList} cols={3}>
-                {clientList.map((client) => (
-                <ClientCard
-                    key= {client}
-                    client={client}
-                />
-                ))}
-            </GridList>
-        </div>
+        <Grid container className={classes.consilBoard}>
+            {clientList.map((client) => (
+                <Grid item className={classes.consilCard} xs={12} sm={6} lg={4} xl={3} >
+                    <ClientCard
+                        key={client}
+                        client={client}
+                    />
+                </Grid>
+            ))}
+
+        </Grid>
     );
 }

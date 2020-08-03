@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180px" height="83px" viewBox="0 0 180 83" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="18" height="14"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="14" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M4.875,5.25 C5.91053391,5.25 6.75,6.08946609 6.75,7.125 L6.75,7.125 L6.75,7.875 C6.75,8.08210678 6.58210678,8.25 6.375,8.25 C6.16789322,8.25 6,8.08210678 6,7.875 L6,7.875 L6,7.125 C6,6.50367966 5.49632034,6 4.875,6 L4.875,6 L1.875,6 C1.25367966,6 0.75,6.50367966 0.75,7.125 L0.75,7.125 L0.75,7.875 C0.75,8.08210678 0.582106781,8.25 0.375,8.25 C0.167893219,8.25 0,8.08210678 0,7.875 L0,7.875 L0,7.125 C0,6.08946609 0.839466094,5.25 1.875,5.25 L1.875,5.25 Z M7.51866949,5.29914065 L7.5937499,5.31065778 C8.42109307,5.52427662 8.99936253,6.27024423 9,7.125 L9,7.125 L9,7.875 C9,8.08210678 8.83210678,8.25 8.625,8.25 C8.41789322,8.25 8.25,8.08210678 8.25,7.875 L8.25,7.875 L8.2500001,7.12527972 C8.24961769,6.61259408 7.90265601,6.16501352 7.4062501,6.03684222 C7.20571981,5.98506558 7.08513115,5.7805304 7.13690778,5.5800001 C7.18868442,5.37946981 7.3932196,5.25888115 7.5937499,5.31065778 Z M3.375,0.75 C4.41053391,0.75 5.25,1.58946609 5.25,2.625 C5.25,3.66053391 4.41053391,4.5 3.375,4.5 C2.33946609,4.5 1.5,3.66053391 1.5,2.625 C1.5,1.58946609 2.33946609,0.75 3.375,0.75 Z M6.01791112,0.799103629 L6.09301469,0.81046875 C6.92266227,1.02289209 7.50294122,1.7704646 7.50294122,2.626875 C7.50294122,3.4832854 6.92266227,4.23085791 6.09301469,4.44328125 C5.89238,4.49465185 5.68808935,4.37364939 5.63671875,4.17301469 C5.58534815,3.97238 5.70635061,3.76808935 5.90698531,3.71671875 C6.40477385,3.58926475 6.75294122,3.14072124 6.75294122,2.626875 C6.75294122,2.11302876 6.40477385,1.66448525 5.90698531,1.53703125 C5.70635061,1.48566065 5.58534815,1.28137 5.63671875,1.08073531 C5.68808935,0.880100611 5.89238,0.759098153 6.09301469,0.81046875 Z M3.375,1.5 C2.75367966,1.5 2.25,2.00367966 2.25,2.625 C2.25,3.24632034 2.75367966,3.75 3.375,3.75 C3.99632034,3.75 4.5,3.24632034 4.5,2.625 C4.5,2.00367966 3.99632034,1.5 3.375,1.5 Z" id="path-3"></path>
+        <text id="text-5" font-family="LucidaGrande, Lucida Grande" font-size="36" font-weight="normal">
+            <tspan x="34" y="38">Consil</tspan>
+        </text>
+        <filter x="-5.6%" y="-10.2%" width="111.3%" height="134.1%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <text id="text-7" font-family="LucidaGrande, Lucida Grande" font-size="36" font-weight="normal">
+            <tspan x="71" y="73">Board</tspan>
+        </text>
+        <filter x="-7.1%" y="-11.8%" width="114.3%" height="139.5%" filterUnits="objectBoundingBox" id="filter-8">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Logo" transform="translate(-134.000000, -331.000000)">
+            <g id="Group-2" transform="translate(134.000000, 331.000000)">
+                <g id="Group-Copy">
+                    <use id="Rectangle-Copy-2" stroke="#979797" mask="url(#mask-2)" stroke-width="2" stroke-dasharray="10" xlink:href="#path-1"></use>
+                    <path d="M26,7 L44,7 L44,21 L26,21 L26,7 Z" id="Rectangle-Copy-4" fill-opacity="0.2" fill="#154945"></path>
+                    <path d="M26,24 L44,24 L44,38 L26,38 L26,24 Z" id="Rectangle-Copy-5" fill-opacity="0.2" fill="#87A428"></path>
+                    <rect id="Rectangle-Copy-6" fill-opacity="0.5" fill="#D8DBD6" x="5" y="21" width="18" height="14"></rect>
+                    <g id="Group" transform="translate(10.000000, 24.000000)" opacity="0.461890811">
+                        <g id="users-copy">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                            <g id="Group" mask="url(#mask-4)" fill="#000000">
+                                <g id="🎨Color">
+                                    <rect id="Rectangle" x="0" y="0" width="9" height="9"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g id="Consil" fill-rule="nonzero" fill="#154945">
+                    <use fill-opacity="1" filter="url(#filter-6)" xlink:href="#text-5"></use>
+                    <use xlink:href="#text-5"></use>
+                    <use fill-opacity="1" xlink:href="#text-5"></use>
+                </g>
+                <g id="Board" fill-rule="nonzero" fill="#007000">
+                    <use fill-opacity="1" filter="url(#filter-8)" xlink:href="#text-7"></use>
+                    <use xlink:href="#text-7"></use>
+                    <use fill-opacity="1" xlink:href="#text-7"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

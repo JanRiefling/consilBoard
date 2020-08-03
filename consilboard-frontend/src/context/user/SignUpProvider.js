@@ -9,7 +9,7 @@ const initialState = {
     signUpStatus: undefined,
 };
 
-function signUpReducer(state, action){
+function signUpReducer(state, action) {
     switch (action.type) {
         case SIGN_UP:
             return {...state, signUpStatus: 'PENDING'};
@@ -22,7 +22,7 @@ function signUpReducer(state, action){
     }
 }
 
-function SignUpProvider({ children }) {
+function SignUpProvider({children}) {
     const [state, dispatch] = useReducer(signUpReducer, initialState);
 
     return (

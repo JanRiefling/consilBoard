@@ -1,36 +1,48 @@
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import React, {useContext, useEffect} from "react";
-import ConsilBoardMenuBar from "../components/ConsilBoardMenuBar/ConsilBoardMenuBar";
-import {getDecodedJWTToken} from "../utils/jwt-utils";
 import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
 import {getConsilBoardClientsList, getPersonalConsilBoard} from "../context/consilboard/consilBoard-action";
 import {ConsilBoardDispatchContext} from "../context/consilboard/ConsilBoardContext";
+import {makeStyles} from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import MenuBarButton from "../components/ConsilBoardMenuBar/MenuBarButton";
 
+const useStyles = makeStyles((theme) => ({
+    consilBoardSetting: {
+        padding: "0.3rem",
+        borderRadius: 5,
+        /*boxShadow: '0px 10px 12px -10px rgba(0,0,0,0.35)',*/
+    },
 
-function ConsilBoardUserPage(){
+    menuButtons: {
+        paddingTop: 40,
+    }
+}));
 
+function ConsilBoardUserPage() {
+    const classes = useStyles();
     const dispatch = useContext(ConsilBoardDispatchContext);
 
     useEffect(() => {
         getPersonalConsilBoard(dispatch);
         getConsilBoardClientsList(dispatch);
-    },[dispatch])
+    }, [dispatch])
+
 
     return (
         <Grid
             container
             alignContent="center"
             justify="center"
+            direction="column"
         >
-            <Grid item >
-        <Typography>{'Hello ' + getDecodedJWTToken().sub}</Typography>
+            <Grid item className={classes.menuButtons}>
+                <MenuBarButton />
             </Grid>
-            <Grid item >
-            <ConsilBoardMenuBar />
-            </Grid>
-            <Grid item>
-                <ConsilBoard />
+            <Grid item className={classes.consilBoardSetting}>
+                <Paper elevation={5}>
+                    <ConsilBoard/>
+                </Paper>
             </Grid>
         </Grid>
     );

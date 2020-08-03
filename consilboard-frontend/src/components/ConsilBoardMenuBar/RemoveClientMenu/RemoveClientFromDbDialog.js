@@ -1,6 +1,5 @@
-/*import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
-import {addClient} from "../../../context/clients/client-actions";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -10,9 +9,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
-import {removeClientFromDb} from "../../../utils/client-utils";*/
+import {removeClientFromDb} from "../../../utils/client-utils";
 
-/*
 export default function RemoveClientFromDbDialog({ open, handleClose }) {
     const [clientname, setClientname] = useState('');
 
@@ -80,4 +78,4 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
             </DialogActions>
         </Dialog>
     );
-}*/
+}

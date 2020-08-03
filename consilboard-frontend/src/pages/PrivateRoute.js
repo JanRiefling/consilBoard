@@ -1,14 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import {
-    UserDispatchContext,
-    UserStateContext,
-} from '../context/user/UserContext';
-import { LOGOUT } from '../context/user/UserContextProvider';
-import { removeJWTToken } from '../utils/jwt-utils';
+import React, {useContext, useEffect} from 'react';
+import {Redirect, Route} from 'react-router-dom';
+import {UserDispatchContext, UserStateContext,} from '../context/user/UserContext';
+import {LOGOUT} from '../context/user/UserContextProvider';
+import {removeJWTToken} from '../utils/jwt-utils';
 
-function PrivateRoute({ component: Component, ...rest }) {
-    const { authStatus, userData } = useContext(UserStateContext);
+function PrivateRoute({component: Component, ...rest}) {
+    const {authStatus, userData} = useContext(UserStateContext);
     const dispatch = useContext(UserDispatchContext);
     useEffect(() => {
         if (
@@ -16,7 +13,7 @@ function PrivateRoute({ component: Component, ...rest }) {
             new Date().getTime() / 1000 >= userData.exp
         ) {
             removeJWTToken();
-            dispatch({ type: LOGOUT });
+            dispatch({type: LOGOUT});
         }
     });
 
@@ -25,11 +22,11 @@ function PrivateRoute({ component: Component, ...rest }) {
             {...rest}
             render={(props) => {
                 if (authStatus !== 'SUCCESS') {
-                    return <Redirect to={'/'} />;
+                    return <Redirect to={'/'}/>;
                 }
 
                 if (new Date().getTime() / 1000 >= userData.exp) {
-                    return <Redirect to={'/'} />;
+                    return <Redirect to={'/'}/>;
                 }
 
                 return <Component {...props} />;

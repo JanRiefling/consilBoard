@@ -1,51 +1,51 @@
 import React, {useContext} from "react";
-import {UserDispatchContext, UserStateContext} from "../../context/user/UserContext";
+import {UserStateContext} from "../../context/user/UserContext";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import {removeJWTToken} from "../../utils/jwt-utils";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {LOGOUT} from "../../context/user/UserContextProvider";
-import {Redirect} from "react-router-dom";
+import UserDropDown from "./UserDropDown";
 
 const useStyles = makeStyles(() => ({
-    title: {
-        flexGrow: 1,
+    logo: {
+        padding: 3,
+        marginRight: "auto",
     },
-    background: {backgroundColor: 'grey'},
+    logoutButton: {
+        marginLeft: "auto",
+    },
+    appBar: {
+        backgroundColor: 'white',
+        margin: "auto",
+        boxShadow: "none",
+    },
 }));
+
 
 function ConsilBoardAppBar() {
 
     const classes = useStyles();
-    const {authStatus, userData} = useContext(UserStateContext);
-    const dispatch = useContext(UserDispatchContext);
-
-
-
-    function redirectToLoginPage() {
-        return ( <Redirect to={'/login'} />);
-    }
+    const {authStatus} = useContext(UserStateContext);
 
 
     return (
-        <AppBar position="static" className={classes.background}>
+        <AppBar position="static" className={classes.appBar}>
             <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                    ConsilBoard {userData && userData.displayName}
-                </Typography>
+                {authStatus !== 'SUCCESS' && (
+                <img className={classes.logo}
+                     onClick={() => console.log('onClick')}
+                     src={require("../../images/ConsilBoardLogo.png")}
+                     alt={"Consil Board Logo, few squares and text"}
+                />
+                    )}
                 {authStatus === 'SUCCESS' && (
-                    <Button
-                        color="inherit"
-                        onClick={() => {
-                            dispatch({ type: LOGOUT });
-                            removeJWTToken();
-                            redirectToLoginPage();
-                        }}
-                    >
-                        Logout
-                    </Button>
+                <img className={classes.logo}
+                     onClick={() => console.log('onClick')}
+                     src={require("../../images/ConsilBoardLogoWithTextSVG.svg")}
+                     alt={"Consil Board Logo, few squares and without text"}
+                />
+                )}
+                {authStatus === 'SUCCESS' && (
+                <UserDropDown />
                 )}
             </Toolbar>
         </AppBar>
