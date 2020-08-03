@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -11,10 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
 import {addClient} from "../../../context/clients/client-actions";
 
-export default function AddClientDialog({ open, handleClose }) {
+export default function AddClientDialog({open, handleClose}) {
     const [clientname, setClientname] = useState('');
 
-    const { addStatus } = useContext(ClientStateContext);
+    const {addStatus} = useContext(ClientStateContext);
 
     useEffect(() => {
         if (addStatus === 'SUCCESS') {
@@ -57,7 +57,7 @@ export default function AddClientDialog({ open, handleClose }) {
                         helperText={'min length 2'}
                     />
                 </form>
-                {addStatus === 'PENDING' && <CircularProgress />}
+                {addStatus === 'PENDING' && <CircularProgress/>}
                 {addStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
                         Add client failed

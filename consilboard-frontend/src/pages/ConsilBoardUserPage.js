@@ -1,35 +1,32 @@
 import Grid from "@material-ui/core/Grid";
 import React, {useContext, useEffect} from "react";
-import ConsilBoardMenuBar from "../components/ConsilBoardMenuBar/ConsilBoardMenuBar";
 import ConsilBoard from "../components/ConsilBoard/ConsilBoard";
 import {getConsilBoardClientsList, getPersonalConsilBoard} from "../context/consilboard/consilBoard-action";
 import {ConsilBoardDispatchContext} from "../context/consilboard/ConsilBoardContext";
 import {makeStyles} from "@material-ui/core/styles";
-import consilBoardTheme from "../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
-
-
-
+import MenuBarButton from "../components/ConsilBoardMenuBar/MenuBarButton";
 
 const useStyles = makeStyles((theme) => ({
-    consilBoardPage: {
-
-    },
     consilBoardSetting: {
         padding: "0.3rem",
         borderRadius: 5,
         /*boxShadow: '0px 10px 12px -10px rgba(0,0,0,0.35)',*/
     },
+
+    menuButtons: {
+        paddingTop: 40,
+    }
 }));
 
-function ConsilBoardUserPage(){
+function ConsilBoardUserPage() {
     const classes = useStyles();
     const dispatch = useContext(ConsilBoardDispatchContext);
 
     useEffect(() => {
         getPersonalConsilBoard(dispatch);
         getConsilBoardClientsList(dispatch);
-    },[dispatch])
+    }, [dispatch])
 
 
     return (
@@ -39,12 +36,12 @@ function ConsilBoardUserPage(){
             justify="center"
             direction="column"
         >
-            <Grid item>
-                <ConsilBoardMenuBar />
+            <Grid item className={classes.menuButtons}>
+                <MenuBarButton />
             </Grid>
             <Grid item className={classes.consilBoardSetting}>
-                <Paper elevation={1}>
-                <ConsilBoard />
+                <Paper elevation={5}>
+                    <ConsilBoard/>
                 </Paper>
             </Grid>
         </Grid>

@@ -16,22 +16,22 @@ export const DELETE_CLIENT_FAILED = 'DELETE_CLIENT_FAILED';
 
 
 export async function fetchClients(dispatch) {
-    dispatch({ type: FETCH_CLIENTS });
+    dispatch({type: FETCH_CLIENTS});
     try {
         const clients = await fetchAllClients();
-        dispatch({ type: FETCH_CLIENTS_SUCCESS, payload: clients });
+        dispatch({type: FETCH_CLIENTS_SUCCESS, payload: clients});
     } catch (error) {
-        dispatch({ type: FETCH_CLIENTS_FAILED, payload: error });
+        dispatch({type: FETCH_CLIENTS_FAILED, payload: error});
     }
 }
 
 export async function addClient(dispatch, clientname) {
-    dispatch({ type: ADD_CLIENT });
+    dispatch({type: ADD_CLIENT});
     try {
         const client = await putClient(clientname);
-        dispatch({ type: ADD_CLIENT_SUCCESS, payload: client });
+        dispatch({type: ADD_CLIENT_SUCCESS, payload: client});
     } catch (error) {
-        dispatch({ type: ADD_CLIENT_FAILED, payload: error });
+        dispatch({type: ADD_CLIENT_FAILED, payload: error});
     }
 }
 

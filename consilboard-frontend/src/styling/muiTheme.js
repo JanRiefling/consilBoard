@@ -30,53 +30,53 @@ const consilBoardTheme = createMuiTheme({
             main: 'rgba(90,160,171,0.7)',
             dark: 'rgba(25,90,104,0.7)',
         },
-        warning:{
+        warning: {
             main: 'rgba(25,90,104,0.1)',
             dark: 'rgba(90,160,171,0.95)',
         }
-},
-/*    typography: {
-        h1: {
-            fontFamily: "AlegreayaSansRegular",
-            color: "#2b2a2a",
-            textShadow: "none",
-            fontSize: "28px",
-        },
+    },
+    /*    typography: {
+            h1: {
+                fontFamily: "AlegreayaSansRegular",
+                color: "#2b2a2a",
+                textShadow: "none",
+                fontSize: "28px",
+            },
 
-        h2: {
-            fontFamily: "AlegreayaSansRegular",
-            color: "#2b2a2a",
-            textShadow: "none",
-            fontSize: "22px",
-        },
+            h2: {
+                fontFamily: "AlegreayaSansRegular",
+                color: "#2b2a2a",
+                textShadow: "none",
+                fontSize: "22px",
+            },
 
-        h3: {
-            fontFamily: "AlegreayaSansMedium",
-            color: "#2b2a2a",
-            textShadow: "none",
-            fontSize: "20px",
-        },
+            h3: {
+                fontFamily: "AlegreayaSansMedium",
+                color: "#2b2a2a",
+                textShadow: "none",
+                fontSize: "20px",
+            },
 
-        h4: {
-            fontFamily: "AlegreayaSansBlack",
-            color: "#2b2a2a",
-            textShadow: "none",
-        },
+            h4: {
+                fontFamily: "AlegreayaSansBlack",
+                color: "#2b2a2a",
+                textShadow: "none",
+            },
 
-        body1: {
-            fontFamily: "SourceSansProRegular",
-            color: "black",
-            textShadow: "none",
-            fontSize: "16px"
-        },
+            body1: {
+                fontFamily: "SourceSansProRegular",
+                color: "black",
+                textShadow: "none",
+                fontSize: "16px"
+            },
 
-        body2: {
-            fontFamily: "SourceSansProRegular",
-            color: "black",
-            textShadow: "none",
-            fontSize: "16px"
-        },
-    },*/
+            body2: {
+                fontFamily: "SourceSansProRegular",
+                color: "black",
+                textShadow: "none",
+                fontSize: "16px"
+            },
+        },*/
 
 });
 

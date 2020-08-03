@@ -10,12 +10,8 @@ import {performSignUp} from "../../utils/auth-utils";
 import {SignUpUserDispatchContext, SignUpUserStateContext} from "../../context/user/SignUpContext";
 import {SIGN_UP, SIGN_UP_FAILED, SIGN_UP_SUCCESS} from "../../context/user/SignUpProvider";
 import {Redirect} from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
 import {makeStyles} from "@material-ui/core";
 import consilBoardTheme from "../../styling/muiTheme";
-import Typography from "@material-ui/core/Typography";
-
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,9 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
-function SignUpForm(){
+function SignUpForm() {
 
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
@@ -69,7 +63,7 @@ function SignUpForm(){
 
     function signUp() {
         dispatch({type: SIGN_UP});
-        if (password !== checkPassword || password.length <= 0 || username.length <= 0){
+        if (password !== checkPassword || password.length <= 0 || username.length <= 0) {
             dispatch({type: SIGN_UP_FAILED});
             return setNotSamePassword("Passwords dont match!");
         }
@@ -82,19 +76,19 @@ function SignUpForm(){
             })
             .catch(() => {
                 dispatch({type: SIGN_UP_FAILED});
-                });
+            });
     }
 
 
     const {signUpStatus} = useContext(SignUpUserStateContext);
-    if(signUpStatus === 'SUCCESS'){
-        return <Redirect to={'/'} />;
+    if (signUpStatus === 'SUCCESS') {
+        return <Redirect to={'/'}/>;
     }
 
     return (
         <div>
             <Button onClick={handleClickOpen} className={classes.signUpButton}>
-               Not registered? Sign Up!
+                Not registered? Sign Up!
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="signup-dialog-title">
                 <DialogTitle id="signup-dialog-title">SignUp</DialogTitle>
@@ -119,7 +113,7 @@ function SignUpForm(){
                         id="password"
                         label="Password"
                         type="password"
-                        value = {password}
+                        value={password}
                         onChange={(event) => setPassword(event.target.value)}
                         fullWidth
                     />
@@ -128,7 +122,7 @@ function SignUpForm(){
                         id="checkPassword"
                         label="Repeat Password"
                         type="password"
-                        value = {checkPassword}
+                        value={checkPassword}
                         onChange={(event) => setCheckPassword(event.target.value)}
                         fullWidth
                     />
