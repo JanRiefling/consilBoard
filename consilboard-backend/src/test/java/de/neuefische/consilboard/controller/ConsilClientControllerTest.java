@@ -121,16 +121,16 @@ class ConsilClientControllerTest {
         assertEquals(byId.get(), expectedClient);
     }*/
 
-    @Test
+/*    @Test
     @DisplayName("delete by id should delete idea with id")
-    public void deleteIdea(){
+    public void clientIdea(){
         //GIVEN
         String token = loginUser();
         db.save(new Client("1", "Some Fancy Client", "user1"));
         db.save(new Client("2", "Second Client", "user2"));
 
         //WHEN
-        String url = "http://localhost:" + port + "/api/clients/2";
+        String url = "http://localhost:" + port + "/api/clients/";
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity entity = new HttpEntity(headers);
@@ -138,7 +138,7 @@ class ConsilClientControllerTest {
 
         //THEN
         assertTrue(db.findById("2").isEmpty());
-    }
+    }*/
 
     @Test
     @DisplayName("get by id should return idea with id")
