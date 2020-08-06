@@ -33,14 +33,14 @@ function ConsilBoardAppBar() {
                 {authStatus !== 'SUCCESS' && (
                 <img className={classes.logo}
                      onClick={() => console.log('onClick')}
-                     src={require("../../images/ConsilBoardLogo.png")}
+                     src={require("../../images/ConsilBoardLogoWithTextSVG.svg")}
                      alt={"Consil Board Logo, few squares and text"}
                 />
                     )}
                 {authStatus === 'SUCCESS' && (
                 <img className={classes.logo}
                      onClick={() => console.log('onClick')}
-                     src={require("../../images/ConsilBoardLogoWithTextSVG.svg")}
+                     src={require("../../images/LogoWithoutText.svg")}
                      alt={"Consil Board Logo, few squares and without text"}
                 />
                 )}

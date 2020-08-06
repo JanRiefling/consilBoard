@@ -11,9 +11,9 @@ import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import SearchDialog from "./SearchClients/SearchDialog";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
 import {FETCH_CONSILBOARD_SUCCESS} from "../../context/consilboard/ConsilBoardProvider";
-import AddClientDialog from "./AddClientMenu/AddClientDialog";
+import AddClientDialog from "./AddClient/AddClientDialog";
 import AddNewConsilBoardDialog from "./AddNewConsilBoard/AddNewConsilBoardDialog";
-import RemoveClientFromDbDialog from "./RemoveClientMenu/RemoveClientFromDbDialog";
+import RemoveClientFromDbDialog from "./RemoveClient/RemoveClientFromDbDialog";
 import Divider from "@material-ui/core/Divider";
 
 
@@ -23,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         marginRight: theme.spacing(2),
+        zIndex: 100,
     },
 }));
 
-export default function MenuBarButton() {
+export default function ConsilBoardMenu() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);

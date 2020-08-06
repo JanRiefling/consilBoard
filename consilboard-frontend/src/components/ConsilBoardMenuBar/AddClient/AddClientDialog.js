@@ -44,7 +44,7 @@ export default function AddClientDialog({open, handleClose}) {
         >
             <DialogTitle id="form-dialog-title">Add Client</DialogTitle>
             <DialogContent>
-                <DialogContentText>Add your client ;)</DialogContentText>
+                <DialogContentText></DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth={true}
