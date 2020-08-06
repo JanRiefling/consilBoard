@@ -11,9 +11,9 @@ import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import SearchDialog from "./SearchClients/SearchDialog";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
 import {FETCH_CONSILBOARD_SUCCESS} from "../../context/consilboard/ConsilBoardProvider";
-import AddClientDialog from "./AddClientMenu/AddClientDialog";
+import AddClientDialog from "./AddClient/AddClientDialog";
 import AddNewConsilBoardDialog from "./AddNewConsilBoard/AddNewConsilBoardDialog";
-import RemoveClientFromDbDialog from "./RemoveClientMenu/RemoveClientFromDbDialog";
+import RemoveClientFromDbDialog from "./RemoveClient/RemoveClientFromDbDialog";
 import Divider from "@material-ui/core/Divider";
 
 
@@ -23,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         marginRight: theme.spacing(2),
+        zIndex: 100,
     },
 }));
 
-export default function MenuBarButton() {
+export default function ConsilBoardMenu() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
@@ -34,6 +35,7 @@ export default function MenuBarButton() {
     const [showConsilBoardDialog, setShowConsilBoardDialog] = useState(false);
     const [newConsilBoard, setNewConsilBoard] = useState(false);
     const [showAddDialog, setShowAddDialog] = useState(false);
+    const [showRemoveDialog, setShowRemoveDialog] = useState(false);
     const {fetchBoardStatus} = useContext(ConsilBoardStateContext);
 
     useEffect(() => {
@@ -55,12 +57,6 @@ export default function MenuBarButton() {
         setOpen(false);
     };
 
-/*    function handleDelete() {
-
-        console.log(dispatch, client.id);
-        /!*     event.stopPropagation();
-             removeClientFromDb(dispatch, client.id)*!/
-    }*/
 
     function handleListKeyDown(event) {
         if (event.key === 'Tab') {
@@ -125,9 +121,9 @@ export default function MenuBarButton() {
                                         </MenuItem>
                                             </>}
                                         <MenuItem
-                                            /*onClick={() => setShowRemoveDialog(true)}*/
+                                            onClick={() => setShowRemoveDialog(true)}
                                         >
-                                            Remove Client Forever :(
+                                            Remove Client Forever
                                         </MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
@@ -148,8 +144,8 @@ export default function MenuBarButton() {
                     handleClose={() => setShowConsilBoardDialog(false)}
                 />
                 <RemoveClientFromDbDialog
-                    /*open={showRemoveDialog}
-                    handleClose={() => setShowRemoveDialog(false)}*/
+                    open={showRemoveDialog}
+                    handleClose={() => setShowRemoveDialog(false)}
                 />
             </div>
         </div>

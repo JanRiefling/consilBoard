@@ -5,7 +5,7 @@ import {getConsilBoardClientsList, getPersonalConsilBoard} from "../context/cons
 import {ConsilBoardDispatchContext} from "../context/consilboard/ConsilBoardContext";
 import {makeStyles} from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import MenuBarButton from "../components/ConsilBoardMenuBar/MenuBarButton";
+import ConsilBoardMenu from "../components/ConsilBoardMenuBar/ConsilBoardMenu";
 
 const useStyles = makeStyles((theme) => ({
     consilBoardSetting: {
@@ -37,7 +37,7 @@ function ConsilBoardUserPage() {
             direction="column"
         >
             <Grid item className={classes.menuButtons}>
-                <MenuBarButton />
+                <ConsilBoardMenu />
             </Grid>
             <Grid item className={classes.consilBoardSetting}>
                 <Paper elevation={5}>

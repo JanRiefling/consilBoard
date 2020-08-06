@@ -17,9 +17,7 @@ import CardActions from "@material-ui/core/CardActions";
 import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
-    clientCard: {
-            width: "100%",
-            height: "auto",
+    root: {
             backgroundColor: 'white',
             borderColor: consilBoardTheme.palette.primary.dark,
             borderWidth: 1,
@@ -50,7 +48,7 @@ function ClientCard({client}) {
 
 
     return (
-            <Card className={classes.clientCard}>
+            <Card className={classes.root}>
                         <CardHeader
                             title={client.clientname}
                             className={classes.titleHover}

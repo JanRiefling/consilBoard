@@ -11,7 +11,6 @@ import {fetchClients} from "../../../context/clients/client-actions";
 import ClientSearchCard from "./ClientSearchCard";
 import {fetchClientsByQuery} from "../../../utils/client-utils";
 
-
 function SearchDialog({open, handleClose}) {
 
     const {clients, fetchStatus} = useContext(ClientStateContext);
@@ -19,7 +18,6 @@ function SearchDialog({open, handleClose}) {
     const [allClients, setAllClients] = useState(false);
     const [query, setQuery] = useState('');
     const [searchClients, setSearchClients] = useState([]);
-
 
     useEffect(() => {
         if (!fetchStatus) {

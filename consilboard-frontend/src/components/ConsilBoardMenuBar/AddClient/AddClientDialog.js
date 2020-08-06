@@ -1,20 +1,20 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from 'react';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import TextField from '@material-ui/core/TextField';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Typography from '@material-ui/core/Typography';
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import TextField from "@material-ui/core/TextField";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Typography from "@material-ui/core/Typography";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
-import {removeClientFromDb} from "../../../utils/client-utils";
+import {addClient} from "../../../context/clients/client-actions";
 
-export default function RemoveClientFromDbDialog({ open, handleClose }) {
+export default function AddClientDialog({open, handleClose}) {
     const [clientname, setClientname] = useState('');
 
-    const { addStatus } = useContext(ClientStateContext);
+    const {addStatus} = useContext(ClientStateContext);
 
     useEffect(() => {
         if (addStatus === 'SUCCESS') {
@@ -27,7 +27,7 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
     const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
-        removeClientFromDb(dispatch, clientname);
+        addClient(dispatch, clientname);
     }
 
     function handleChange(event) {
@@ -44,7 +44,7 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
         >
             <DialogTitle id="form-dialog-title">Add Client</DialogTitle>
             <DialogContent>
-                <DialogContentText>Add your client ;)</DialogContentText>
+                <DialogContentText></DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth={true}
@@ -57,7 +57,7 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
                         helperText={'min length 2'}
                     />
                 </form>
-                {addStatus === 'PENDING' && <CircularProgress />}
+                {addStatus === 'PENDING' && <CircularProgress/>}
                 {addStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
                         Add client failed

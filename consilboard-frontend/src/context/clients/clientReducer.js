@@ -4,7 +4,7 @@ import {
     ADD_CLIENT_SUCCESS,
     ADD_CLIENT_TO_CONSILBOARD,
     ADD_CLIENT_TO_CONSILBOARD_FAILED,
-    ADD_CLIENT_TO_CONSILBOARD_SUCCESS,
+    ADD_CLIENT_TO_CONSILBOARD_SUCCESS, DELETE_CLIENT, DELETE_CLIENT_FAILED,
     DELETE_CLIENT_SUCCESS,
     FETCH_CLIENTS,
     FETCH_CLIENTS_FAILED,
@@ -38,13 +38,18 @@ export default function clientReducer(state, action) {
                     return client.id !== action.payload;
                 }),
             };
+        case DELETE_CLIENT:
+            return {...state, removeStatus: 'PENDING'};
         case DELETE_CLIENT_SUCCESS:
             return {
                 ...state,
+                removeStatus: 'SUCCESS',
                 clients: state.clients.filter((client) => {
                     return client.id !== action.payload;
                 }),
             };
+        case DELETE_CLIENT_FAILED:
+            return {...state, removeStatus: 'FAILED'};
         default:
             return state;
     }

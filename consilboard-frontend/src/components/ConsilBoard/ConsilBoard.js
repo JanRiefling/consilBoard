@@ -19,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
     consilCard: {
         padding: 20,
-        height: "5%",
-        width: "10%"
     },
 }));
 
