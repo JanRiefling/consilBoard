@@ -32,7 +32,12 @@ public class ClientService {
         return clientDB.save(client);
     }
 
-    public void deleteClient(String id) {
+    public void deleteClient(String clientname) throws IllegalArgumentException {
+        Client client = clientDB.findClientByClientname(clientname);
+        if (client == null){
+            throw new IllegalArgumentException("Client to delete not found");
+        }
+        String id = client.getId();
         clientDB.deleteById(id);
     }
 

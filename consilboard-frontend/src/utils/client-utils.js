@@ -61,14 +61,15 @@ export function putClient(clientname) {
     });
 }
 
-export function removeClientFromDb(id) {
+export function removeClientFromDb(clientname) {
     const token = getJWTToken();
-    return fetch(`/api/clients/${id}`, {
+    return fetch(`/api/clients`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({clientname: clientname}),
     });
 
 

@@ -9,25 +9,25 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
-import {removeClientFromDb} from "../../../utils/client-utils";
+import {deleteClientFromDB} from "../../../context/clients/client-actions";
 
 export default function RemoveClientFromDbDialog({ open, handleClose }) {
     const [clientname, setClientname] = useState('');
 
-    const { addStatus } = useContext(ClientStateContext);
+    const { removeStatus } = useContext(ClientStateContext);
 
     useEffect(() => {
-        if (addStatus === 'SUCCESS') {
+        if (removeStatus === 'SUCCESS') {
             setClientname('');
             handleClose();
         }
         // eslint-disable-next-line
-    }, [addStatus]);
+    }, [removeStatus]);
 
     const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
-        removeClientFromDb(dispatch, clientname);
+        deleteClientFromDB(dispatch, clientname);
     }
 
     function handleChange(event) {
@@ -42,9 +42,9 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
             maxWidth={'sm'}
             fullWidth={true}
         >
-            <DialogTitle id="form-dialog-title">Add Client</DialogTitle>
+            <DialogTitle id="form-dialog-title">Remove Client</DialogTitle>
             <DialogContent>
-                <DialogContentText>Add your client ;)</DialogContentText>
+                <DialogContentText>Remove Client by Name</DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth={true}
@@ -53,14 +53,13 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
                         value={clientname}
                         onChange={handleChange}
                         margin="normal"
-                        error={clientname.length < 2}
-                        helperText={'min length 2'}
+                        error={clientname}
                     />
                 </form>
-                {addStatus === 'PENDING' && <CircularProgress />}
-                {addStatus === 'FAILED' && (
+                {removeStatus === 'PENDING' && <CircularProgress />}
+                {removeStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
-                        Add client failed
+                        Remove client failed
                     </Typography>
                 )}
             </DialogContent>
@@ -73,7 +72,7 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
                     onClick={handleSubmit}
                     color="primary"
                 >
-                    Add
+                    Remove
                 </Button>
             </DialogActions>
         </Dialog>

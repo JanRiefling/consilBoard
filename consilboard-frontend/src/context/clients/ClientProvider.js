@@ -9,6 +9,7 @@ export default function ClientProvider({children}) {
         fetchStatus: undefined,
         addStatus: undefined,
         addToBoardStatus: undefined,
+        removeStatus: undefined,
     });
 
     return (

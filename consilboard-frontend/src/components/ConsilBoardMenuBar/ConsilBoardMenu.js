@@ -35,6 +35,7 @@ export default function ConsilBoardMenu() {
     const [showConsilBoardDialog, setShowConsilBoardDialog] = useState(false);
     const [newConsilBoard, setNewConsilBoard] = useState(false);
     const [showAddDialog, setShowAddDialog] = useState(false);
+    const [showRemoveDialog, setShowRemoveDialog] = useState(false);
     const {fetchBoardStatus} = useContext(ConsilBoardStateContext);
 
     useEffect(() => {
@@ -56,12 +57,6 @@ export default function ConsilBoardMenu() {
         setOpen(false);
     };
 
-/*    function handleDelete() {
-
-        console.log(dispatch, client.id);
-        /!*     event.stopPropagation();
-             removeClientFromDb(dispatch, client.id)*!/
-    }*/
 
     function handleListKeyDown(event) {
         if (event.key === 'Tab') {
@@ -126,9 +121,9 @@ export default function ConsilBoardMenu() {
                                         </MenuItem>
                                             </>}
                                         <MenuItem
-                                            /*onClick={() => setShowRemoveDialog(true)}*/
+                                            onClick={() => setShowRemoveDialog(true)}
                                         >
-                                            Remove Client Forever :(
+                                            Remove Client Forever
                                         </MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
@@ -149,8 +144,8 @@ export default function ConsilBoardMenu() {
                     handleClose={() => setShowConsilBoardDialog(false)}
                 />
                 <RemoveClientFromDbDialog
-                    /*open={showRemoveDialog}
-                    handleClose={() => setShowRemoveDialog(false)}*/
+                    open={showRemoveDialog}
+                    handleClose={() => setShowRemoveDialog(false)}
                 />
             </div>
         </div>
