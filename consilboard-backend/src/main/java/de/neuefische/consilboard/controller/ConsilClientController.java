@@ -54,4 +54,6 @@ public class ConsilClientController {
     public void deleteClient(@RequestBody AddClientDto clientname) {
         clientService.deleteClient(clientname.getClientname());
     }
+
+
 }

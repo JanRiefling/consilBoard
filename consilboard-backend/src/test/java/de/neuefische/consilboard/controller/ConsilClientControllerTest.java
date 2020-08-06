@@ -140,7 +140,7 @@ class ConsilClientControllerTest {
         assertTrue(db.findById("2").isEmpty());
     }*/
 
-    @Test
+    /*@Test
     @DisplayName("get by id should return idea with id")
     public void getIdeaById(){
         //GIVEN
@@ -176,7 +176,7 @@ class ConsilClientControllerTest {
 
         //THEN
         assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
-    }
+    }*/
 
 
 /*    @Test
