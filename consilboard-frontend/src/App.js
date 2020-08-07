@@ -30,7 +30,7 @@ function Navigation() {
             <Container maxWidth={'md'} component="main">
                 <Switch>
                     <PrivateRoute
-                        path="/api/:id"
+                        path="/api/clients/comment/:id"
                         component={ClientDetails}
                         exact
                     />

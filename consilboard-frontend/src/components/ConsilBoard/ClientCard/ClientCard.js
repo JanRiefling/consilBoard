@@ -1,7 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import BackspaceOutlinedIcon from '@material-ui/icons/BackspaceOutlined';
@@ -15,6 +14,9 @@ import consilBoardTheme from "../../../styling/muiTheme";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import Divider from "@material-ui/core/Divider";
+import AddCommentDialog from "./AddCommentDialog";
+import CommentList from "./CommentList";
+import {fetchComments} from "../../../utils/client-utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,7 +47,15 @@ function ClientCard({client}) {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useContext(ConsilBoardDispatchContext);
+    const [commentDialog, setCommentDialog] = useState(false);
+    const [commentList, setCommentList] = useState([]);
+    const id = client.id;
 
+    useEffect(() => {
+         fetchComments(id)
+         .then((data) => setCommentList(data))
+             .catch((e) => console.error(e));
+    },[id]);
 
     return (
             <Card className={classes.root}>
@@ -54,9 +64,12 @@ function ClientCard({client}) {
                             className={classes.titleHover}
                         />
                         <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Important tasks, notes related to your client.
-                            </Typography>
+                            {commentList.map((comment) => (
+                                <CommentList
+                                    key={comment.id}
+                                    comment={comment}
+                                />
+                            ))}
                         </CardContent>
                         <Divider />
                             <CardActions disableSpacing>
@@ -66,9 +79,18 @@ function ClientCard({client}) {
                                     >
                                         <InfoOutlinedIcon/>
                                     </IconButton>
-                                    <IconButton>
+                                    <IconButton
+                                        onClick={() => {
+                                            setCommentDialog(true)
+                                        }}
+                                    >
                                         <CreateOutlinedIcon/>
                                     </IconButton>
+                                    <AddCommentDialog
+                                        id={client.id}
+                                        open={commentDialog}
+                                        handleClose={() => setCommentDialog(false)}
+                                    />
                                     <IconButton>
                                         <NoteAddOutlinedIcon/>
                                     </IconButton>

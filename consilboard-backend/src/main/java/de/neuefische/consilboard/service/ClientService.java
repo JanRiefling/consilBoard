@@ -2,10 +2,15 @@ package de.neuefische.consilboard.service;
 
 import de.neuefische.consilboard.db.ClientDB;
 import de.neuefische.consilboard.model.Client;
+import de.neuefische.consilboard.model.Comment;
 import de.neuefische.consilboard.utils.RandomIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,9 +31,11 @@ public class ClientService {
 
     public Client add(String clientname, String user) {
         Client client = new Client();
+        List<Comment> newCommentList = new ArrayList<>();
         client.setId(randomIdUtil.generateRandomId());
         client.setClientname(clientname);
         client.setUser(user);
+        client.setUserComments(newCommentList);
         return clientDB.save(client);
     }
 
@@ -48,5 +55,38 @@ public class ClientService {
     public Iterable<Client> findClientsByName(String query, String user) {
 
         return clientDB.findClientsByClientnameStartingWithAndUser(query, user);
+    }
+
+
+    public List<Comment> getCommentIdArray(String id) throws ResponseStatusException {
+        Client client = clientDB.findClientById(id);
+        return client.getUserComments();
+    }
+
+    public List<Comment> addCommentToClientCommentArray(String note, String id, String user) {
+        Client client = clientDB.findClientById(id);
+        List<Comment> newCommentList = client.getUserComments();
+            Date date = new Date();
+            Comment comment = new Comment();
+            comment.setId(randomIdUtil.generateRandomId());
+            comment.setComment(note);
+            comment.setCreatedBy(user);
+            comment.setTimeStamp(date.getTime());
+            newCommentList.add(comment);
+            clientDB.save(client);
+
+        return newCommentList;
+    }
+
+    public List<Comment> removeCommentFromCommentArray(String id, String user) {
+        Client client = clientDB.findClientByUser(user);
+        List<Comment> newCommentList = client.getUserComments();
+        if(newCommentList.contains(id)) {
+            newCommentList.remove(id);
+        }
+
+        clientDB.save(client);
+
+        return newCommentList;
     }
 }

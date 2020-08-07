@@ -9,29 +9,29 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import {ClientDispatchContext, ClientStateContext} from "../../../context/clients/ClientContext";
-import {addClient} from "../../../context/clients/client-actions";
+import {addComment} from "../../../context/clients/client-actions";
 
-export default function AddClientDialog({open, handleClose}) {
-    const [clientname, setClientname] = useState('');
+export default function AddCommentDialog({open, handleClose, id}) {
+    const [comment, setComment] = useState('');
 
-    const {addStatus} = useContext(ClientStateContext);
+    const {addCommentStatus} = useContext(ClientStateContext);
 
     useEffect(() => {
-        if (addStatus === 'SUCCESS') {
-            setClientname('');
+        if (addCommentStatus === 'SUCCESS') {
+            setComment('');
             handleClose();
         }
         // eslint-disable-next-line
-    }, [addStatus]);
+    }, [addCommentStatus]);
 
     const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
-        addClient(dispatch, clientname);
+        addComment(dispatch, comment, id);
     }
 
     function handleChange(event) {
-        setClientname(event.target.value);
+        setComment(event.target.value);
     }
 
     return (
@@ -42,25 +42,25 @@ export default function AddClientDialog({open, handleClose}) {
             maxWidth={'sm'}
             fullWidth={true}
         >
-            <DialogTitle id="form-dialog-title">Add Client</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add a Comment</DialogTitle>
             <DialogContent>
                 <DialogContentText></DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth={true}
                         multiline={true}
-                        label="Clientname"
-                        value={clientname}
+                        label="Comment"
+                        value={comment}
                         onChange={handleChange}
                         margin="normal"
-                        error={clientname.length < 2}
+                        error={comment.length < 2}
                         helperText={'min length 2'}
                     />
                 </form>
-                {addStatus === 'PENDING' && <CircularProgress/>}
-                {addStatus === 'FAILED' && (
+                {addCommentStatus === 'PENDING' && <CircularProgress/>}
+                {addCommentStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
-                        Add client failed
+                        Add comment failed
                     </Typography>
                 )}
             </DialogContent>
@@ -69,11 +69,11 @@ export default function AddClientDialog({open, handleClose}) {
                     Cancel
                 </Button>
                 <Button
-                    disabled={clientname.length < 2}
+                    disabled={comment.length < 2}
                     onClick={handleSubmit}
                     color="primary"
                 >
-                    Add Client
+                    Add
                 </Button>
             </DialogActions>
         </Dialog>
