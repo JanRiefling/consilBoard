@@ -5,11 +5,12 @@ import clientReducer from './clientReducer';
 export default function ClientProvider({children}) {
     const [state, dispatch] = useReducer(clientReducer, {
         clients: [],
-        clientsToBoard: [],
+        comments: [],
         fetchStatus: undefined,
         addStatus: undefined,
-        addToBoardStatus: undefined,
         removeStatus: undefined,
+        commentStatus: undefined,
+        addCommentStatus: undefined,
     });
 
     return (

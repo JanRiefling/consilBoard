@@ -17,5 +17,5 @@ public class Client {
     private String id;
     private String clientname;
     private String user;
-    /*private List<Comment> userComments;*/
+    private List<Comment> userComments;
 }

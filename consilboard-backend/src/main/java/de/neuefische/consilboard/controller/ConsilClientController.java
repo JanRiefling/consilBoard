@@ -2,7 +2,9 @@ package de.neuefische.consilboard.controller;
 
 
 import de.neuefische.consilboard.dto.AddClientDto;
+import de.neuefische.consilboard.dto.AddCommentDto;
 import de.neuefische.consilboard.model.Client;
+import de.neuefische.consilboard.model.Comment;
 import de.neuefische.consilboard.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -54,4 +57,21 @@ public class ConsilClientController {
     public void deleteClient(@RequestBody AddClientDto clientname) {
         clientService.deleteClient(clientname.getClientname());
     }
+
+    @PutMapping("comment/{id}")
+    public List<Comment> addClientToConsilBoard(@RequestBody @Valid AddCommentDto data, @PathVariable String id, Principal principal) {
+        return clientService.addCommentToClientCommentArray(data.getCommentString(), id, principal.getName());
+    }
+
+    @GetMapping("comment")
+    public List<Comment> getClientArray(Principal principal){
+        return clientService.getCommentIdArray(principal.getName());
+    }
+
+    @DeleteMapping("comment/{id}")
+    public List<Comment> removeClientFromClientFromBoard(@PathVariable String id, Principal principal) {
+        String user = principal.getName();
+        return clientService.removeCommentFromCommentArray(id, user);
+    }
+
 }

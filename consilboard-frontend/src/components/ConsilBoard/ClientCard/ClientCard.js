@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +15,7 @@ import consilBoardTheme from "../../../styling/muiTheme";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import Divider from "@material-ui/core/Divider";
+import AddCommentDialog from "./AddCommentDialog";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,6 +46,7 @@ function ClientCard({client}) {
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useContext(ConsilBoardDispatchContext);
+    const [commentDialog, setCommentDialog] = useState(false);
 
 
     return (
@@ -66,9 +68,18 @@ function ClientCard({client}) {
                                     >
                                         <InfoOutlinedIcon/>
                                     </IconButton>
-                                    <IconButton>
+                                    <IconButton
+                                        onClick={() => {
+                                            setCommentDialog(true)
+                                        }}
+                                    >
                                         <CreateOutlinedIcon/>
                                     </IconButton>
+                                    <AddCommentDialog
+                                        id={client.id}
+                                        open={commentDialog}
+                                        handleClose={() => setCommentDialog(false)}
+                                    />
                                     <IconButton>
                                         <NoteAddOutlinedIcon/>
                                     </IconButton>
