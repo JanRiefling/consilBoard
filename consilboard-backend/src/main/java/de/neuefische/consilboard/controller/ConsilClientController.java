@@ -59,17 +59,17 @@ public class ConsilClientController {
     }
 
     @PutMapping("comment/{id}")
-    public List<Comment> addClientToConsilBoard(@RequestBody @Valid AddCommentDto data, @PathVariable String id, Principal principal) {
+    public List<Comment> addCommentToClient(@RequestBody @Valid AddCommentDto data, @PathVariable String id, Principal principal) {
         return clientService.addCommentToClientCommentArray(data.getCommentString(), id, principal.getName());
     }
 
-    @GetMapping("comment")
-    public List<Comment> getClientArray(Principal principal){
-        return clientService.getCommentIdArray(principal.getName());
+    @GetMapping("comment/{id}")
+    public List<Comment> getCommentArray(@PathVariable String id){
+        return clientService.getCommentIdArray(id);
     }
 
     @DeleteMapping("comment/{id}")
-    public List<Comment> removeClientFromClientFromBoard(@PathVariable String id, Principal principal) {
+    public List<Comment> removeComment(@PathVariable String id, Principal principal) {
         String user = principal.getName();
         return clientService.removeCommentFromCommentArray(id, user);
     }

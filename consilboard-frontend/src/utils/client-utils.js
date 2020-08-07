@@ -73,9 +73,9 @@ export function removeClientFromDb(clientname) {
     });
 }
 
-    export async function fetchComments() {
+    export async function fetchComments(id) {
         const token = getJWTToken();
-        const response = await fetch(`/api/clients/comment`, {
+        const response = await fetch(`/api/clients/comment/${id}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,

@@ -27,7 +27,6 @@ export default function AddCommentDialog({open, handleClose, id}) {
     const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
-        console.log(id);
         addComment(dispatch, comment, id);
     }
 

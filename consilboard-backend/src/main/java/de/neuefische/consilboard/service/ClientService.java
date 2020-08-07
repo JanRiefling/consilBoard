@@ -5,7 +5,6 @@ import de.neuefische.consilboard.model.Client;
 import de.neuefische.consilboard.model.Comment;
 import de.neuefische.consilboard.utils.RandomIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -59,11 +58,8 @@ public class ClientService {
     }
 
 
-    public List<Comment> getCommentIdArray(String user) throws ResponseStatusException {
-        Client client = clientDB.findClientByUser(user);
-        if(client == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Client assigned to User");
-        }
+    public List<Comment> getCommentIdArray(String id) throws ResponseStatusException {
+        Client client = clientDB.findClientById(id);
         return client.getUserComments();
     }
 

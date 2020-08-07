@@ -28,6 +28,7 @@ export default function ConsilBoard() {
     const classes = useStyles();
     const {clientList} = useContext(ConsilBoardStateContext);
 
+
     return (
         <Grid container className={classes.consilBoard}>
             {clientList.map((client) => (

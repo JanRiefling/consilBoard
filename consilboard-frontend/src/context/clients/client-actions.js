@@ -49,15 +49,17 @@ export async function deleteClientFromDB(dispatch, clientname) {
     }
 }
 
-export async function addComment(dispatch, comment, id){
+export async function addComment(dispatch, comment, id) {
     dispatch({type: ADD_COMMENT});
     try {
-       const comments =  await putComment(comment, id);
+        const comments = await putComment(comment, id);
         dispatch({type: ADD_COMMENT_SUCCESS, payload: comments});
     } catch (error) {
         dispatch({type: ADD_COMMENT_FAILED});
     }
 }
+
+
 
 
 
