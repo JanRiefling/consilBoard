@@ -11,10 +11,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import {deleteClientFromDB} from "../../../context/clients/client-actions";
 
-export default function RemoveClientFromDbDialog({ open, handleClose }) {
+export default function RemoveClientFromDbDialog({open, handleClose}) {
     const [clientname, setClientname] = useState('');
 
-    const { removeStatus } = useContext(ClientStateContext);
+    const {removeStatus} = useContext(ClientStateContext);
 
     useEffect(() => {
         if (removeStatus === 'SUCCESS') {
@@ -56,7 +56,7 @@ export default function RemoveClientFromDbDialog({ open, handleClose }) {
                         error={clientname}
                     />
                 </form>
-                {removeStatus === 'PENDING' && <CircularProgress />}
+                {removeStatus === 'PENDING' && <CircularProgress/>}
                 {removeStatus === 'FAILED' && (
                     <Typography variant="body1" component="p">
                         Remove client failed

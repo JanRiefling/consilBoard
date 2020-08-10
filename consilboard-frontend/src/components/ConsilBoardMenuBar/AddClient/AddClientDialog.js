@@ -19,7 +19,6 @@ export default function AddClientDialog({open, handleClose}) {
     useEffect(() => {
         if (addStatus === 'SUCCESS') {
             setClientname('');
-            handleClose();
         }
         // eslint-disable-next-line
     }, [addStatus]);
@@ -53,8 +52,6 @@ export default function AddClientDialog({open, handleClose}) {
                         value={clientname}
                         onChange={handleChange}
                         margin="normal"
-                        error={clientname.length < 2}
-                        helperText={'min length 2'}
                     />
                 </form>
                 {addStatus === 'PENDING' && <CircularProgress/>}

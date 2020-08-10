@@ -15,6 +15,7 @@ export default function AddCommentDialog({open, handleClose, id}) {
     const [comment, setComment] = useState('');
 
     const {addCommentStatus} = useContext(ClientStateContext);
+    const dispatch = useContext(ClientDispatchContext);
 
     useEffect(() => {
         if (addCommentStatus === 'SUCCESS') {
@@ -24,7 +25,6 @@ export default function AddCommentDialog({open, handleClose, id}) {
         // eslint-disable-next-line
     }, [addCommentStatus]);
 
-    const dispatch = useContext(ClientDispatchContext);
 
     function handleSubmit() {
         addComment(dispatch, comment, id);
@@ -42,19 +42,17 @@ export default function AddCommentDialog({open, handleClose, id}) {
             maxWidth={'sm'}
             fullWidth={true}
         >
-            <DialogTitle id="form-dialog-title">Add a Comment</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add a Comment, Note or some Information</DialogTitle>
             <DialogContent>
                 <DialogContentText></DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth={true}
                         multiline={true}
-                        label="Comment"
+                        label="Your comment here"
                         value={comment}
                         onChange={handleChange}
                         margin="normal"
-                        error={comment.length < 2}
-                        helperText={'min length 2'}
                     />
                 </form>
                 {addCommentStatus === 'PENDING' && <CircularProgress/>}

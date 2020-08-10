@@ -31,21 +31,21 @@ function ConsilBoardAppBar() {
         <AppBar position="static" className={classes.appBar}>
             <Toolbar>
                 {authStatus !== 'SUCCESS' && (
-                <img className={classes.logo}
-                     onClick={() => console.log('onClick')}
-                     src={require("../../images/ConsilBoardLogoWithTextSVG.svg")}
-                     alt={"Consil Board Logo, few squares and text"}
-                />
-                    )}
-                {authStatus === 'SUCCESS' && (
-                <img className={classes.logo}
-                     onClick={() => console.log('onClick')}
-                     src={require("../../images/LogoWithoutText.svg")}
-                     alt={"Consil Board Logo, few squares and without text"}
-                />
+                    <img className={classes.logo}
+                         onClick={() => console.log('onClick')}
+                         src={require("../../images/ConsilBoardLogoWithTextSVG.svg")}
+                         alt={"Consil Board Logo, few squares and text"}
+                    />
                 )}
                 {authStatus === 'SUCCESS' && (
-                <UserDropDown />
+                    <img className={classes.logo}
+                         onClick={() => console.log('onClick')}
+                         src={require("../../images/LogoWithoutText.svg")}
+                         alt={"Consil Board Logo, few squares and without text"}
+                    />
+                )}
+                {authStatus === 'SUCCESS' && (
+                    <UserDropDown/>
                 )}
             </Toolbar>
         </AppBar>

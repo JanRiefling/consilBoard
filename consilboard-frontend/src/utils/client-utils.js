@@ -73,47 +73,48 @@ export function removeClientFromDb(clientname) {
     });
 }
 
-    export async function fetchComments(id) {
-        const token = getJWTToken();
-        const response = await fetch(`/api/clients/comment/${id}`, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+export async function getComments(id) {
+    const token = getJWTToken();
+    const response = await fetch(`/api/clients/comment/${id}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (response.status !== 200) {
+        throw new Error('something went wrong!');
+    }
+    return response.json();
+}
+
+
+export function putComment(comment, id) {
+    const token = getJWTToken();
+    return fetch(`/api/clients/comment/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(comment),
+    }).then((response) => {
         if (response.status !== 200) {
-            throw new Error('something went wrong!');
+            throw new Error('invalid response');
         }
-        return await response.json();
-    }
 
+        return response.json();
+    });
+}
 
-    export function putComment(comment, id) {
-        const token = getJWTToken();
-        return fetch(`/api/clients/comment/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(comment),
-        }).then((response) => {
-            if (response.status !== 200) {
-                throw new Error('invalid response');
-            }
-
-            return response.json();
-        });
-    }
-
-    export function removeComment(id) {
-        const token = getJWTToken();
-        return fetch(`/api/clients/comment/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-    }
+export function removeComment(id, clientid) {
+    const token = getJWTToken();
+    return fetch(`/api/clients/comment/${id}/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(clientid),
+    });
+}
 

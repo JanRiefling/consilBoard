@@ -1,15 +1,27 @@
-import React from "react";
-import {List} from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
-import Grid from "@material-ui/core/Grid";
+import React, {useContext} from "react";
+import {Typography} from "@material-ui/core";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import {removeComment} from "../../../utils/client-utils";
+import IconButton from "@material-ui/core/IconButton";
+import {ClientDispatchContext} from "../../../context/clients/ClientContext";
+import {REMOVE_COMMENT} from "../../../context/clients/client-actions";
 
-function CommentList({comment}){
+function CommentList({comment, client}) {
+
+    const dispatch = useContext(ClientDispatchContext);
+
+    function handleRemove() {
+        removeComment(comment.id, client.id)
+            .then((data) => dispatch({type: REMOVE_COMMENT, payload: data}))
+    }
+
     return (
-        <Grid item>
-                <List variant="body2" color="textSecondary">
-                    <ListItem>{comment.comment}</ListItem>
-                </List>
-        </Grid>
+        <Typography variant="body1">
+            {comment.comment}
+            <IconButton onClick={handleRemove} size="small">
+                <DeleteForeverIcon fontSize="inherit" color="primary"/>
+            </IconButton>
+        </Typography>
     );
 }
 

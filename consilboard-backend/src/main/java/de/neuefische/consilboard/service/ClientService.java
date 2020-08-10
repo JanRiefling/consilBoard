@@ -63,7 +63,7 @@ public class ClientService {
         return client.getUserComments();
     }
 
-    public List<Comment> addCommentToClientCommentArray(String note, String id, String user) {
+    public Comment addCommentToClientCommentArray(String note, String id, String user) {
         Client client = clientDB.findClientById(id);
         List<Comment> newCommentList = client.getUserComments();
             Date date = new Date();
@@ -72,21 +72,17 @@ public class ClientService {
             comment.setComment(note);
             comment.setCreatedBy(user);
             comment.setTimeStamp(date.getTime());
+            comment.setClientId(client.getId());
             newCommentList.add(comment);
             clientDB.save(client);
 
-        return newCommentList;
+        return comment;
     }
 
-    public List<Comment> removeCommentFromCommentArray(String id, String user) {
-        Client client = clientDB.findClientByUser(user);
+    public void removeCommentFromCommentArray(String id, String clientid) {
+        Client client = clientDB.findClientById(clientid);
         List<Comment> newCommentList = client.getUserComments();
-        if(newCommentList.contains(id)) {
-            newCommentList.remove(id);
-        }
-
+        newCommentList.removeIf(comment -> comment.getId().equals(id));
         clientDB.save(client);
-
-        return newCommentList;
     }
 }

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -8,7 +8,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import {LOGOUT} from "../../context/user/UserContextProvider";
 import {removeJWTToken} from "../../utils/jwt-utils";
 import {UserDispatchContext} from "../../context/user/UserContext";
-import {ConsilBoardDispatchContext} from "../../context/consilboard/ConsilBoardContext";
 import {Redirect} from "react-router-dom";
 
 const StyledMenu = withStyles({
@@ -46,7 +45,6 @@ export default function UserDropDown() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const dispatch = useContext(UserDispatchContext);
-    const dispatchBoard = useContext(ConsilBoardDispatchContext);
 
     function redirectToLoginPage() {
         return (<Redirect to={'/login'}/>);
@@ -68,7 +66,7 @@ export default function UserDropDown() {
                 color="black"
                 onClick={handleClick}
             >
-                <PersonIcon fontSize="large" variant="outlined" />
+                <PersonIcon fontSize="large" variant="outlined"/>
             </IconButton>
             <StyledMenu
                 id="customized-menu"
@@ -78,20 +76,20 @@ export default function UserDropDown() {
                 onClose={handleClose}
             >
                 <StyledMenuItem>
-                    <ListItemText primary="Settings" />
+                    <ListItemText primary="Settings"/>
                 </StyledMenuItem>
                 <StyledMenuItem>
-                    <ListItemText primary="Community" />
+                    <ListItemText primary="Community"/>
                 </StyledMenuItem>
                 <StyledMenuItem
                     onClick={() => {
                         dispatch({type: LOGOUT});
                         removeJWTToken();
                         redirectToLoginPage();
-                        dispatchBoard({type: 'RESET'}); //Write RESet REDucer state
+                        window.location.reload();
                     }}
                 >
-                    <ListItemText primary="Logout" />
+                    <ListItemText primary="Logout"/>
                 </StyledMenuItem>
             </StyledMenu>
         </div>

@@ -9,10 +9,9 @@ import ConsilBoardUserPage from "./pages/ConsilBoardUserPage";
 import ConsilBoardAppBar from "./components/ConsilBoardAppBar/ConsilBoardAppBar";
 import ClientProvider from "./context/clients/ClientProvider";
 import PrivateRoute from "./pages/PrivateRoute";
-import ClientDetails from "./pages/ClientDetails";
 import ConsilBoardProvider from "./context/consilboard/ConsilBoardProvider";
 import consilBoardTheme from "./styling/muiTheme";
-
+import ClientDetailsPage from "./pages/ClientDetailsPage";
 
 function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -30,8 +29,8 @@ function Navigation() {
             <Container maxWidth={'md'} component="main">
                 <Switch>
                     <PrivateRoute
-                        path="/api/clients/comment/:id"
-                        component={ClientDetails}
+                        path="/client/:id"
+                        component={ClientDetailsPage}
                         exact
                     />
                     <PrivateRoute path="/api" component={ConsilBoardUserPage} exact/>

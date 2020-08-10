@@ -1,4 +1,4 @@
-import {fetchAllClients, putClient, putComment, removeClientFromDb} from '../../utils/client-utils';
+import {fetchAllClients, getComments, putClient, putComment, removeClientFromDb} from '../../utils/client-utils';
 
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
 export const FETCH_CLIENTS_SUCCESS = 'FETCH_CLIENTS_SUCCESS';
@@ -16,7 +16,6 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
 export const ADD_COMMENT_FAILED = 'ADD_COMMENT_FAILED';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
-
 
 
 export async function fetchClients(dispatch) {
@@ -42,8 +41,8 @@ export async function addClient(dispatch, clientname) {
 export async function deleteClientFromDB(dispatch, clientname) {
     dispatch({type: DELETE_CLIENT});
     try {
-       await removeClientFromDb(clientname);
-       dispatch({type: DELETE_CLIENT_SUCCESS});
+        await removeClientFromDb(clientname);
+        dispatch({type: DELETE_CLIENT_SUCCESS});
     } catch (error) {
         dispatch({type: DELETE_CLIENT_FAILED});
     }
@@ -58,6 +57,18 @@ export async function addComment(dispatch, comment, id) {
         dispatch({type: ADD_COMMENT_FAILED});
     }
 }
+
+export async function fetchComments(dispatch, id) {
+    dispatch({type: FETCH_COMMENTS});
+    try {
+        const comments = await getComments(id);
+        dispatch({type: FETCH_COMMENTS_SUCCESS, payload: comments});
+    } catch (error) {
+        dispatch({type: FETCH_CLIENTS_FAILED, payload: error});
+    }
+}
+
+
 
 
 

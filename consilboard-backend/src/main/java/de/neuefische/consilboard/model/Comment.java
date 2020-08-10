@@ -15,6 +15,7 @@ public class Comment {
     @Id
     private String id;
     private String createdBy;
+    private String clientId;
     private String comment;
     private long timeStamp;
 }

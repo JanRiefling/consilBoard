@@ -10,9 +10,21 @@ import {ClientDispatchContext, ClientStateContext} from "../../../context/client
 import {fetchClients} from "../../../context/clients/client-actions";
 import ClientSearchCard from "./ClientSearchCard";
 import {fetchClientsByQuery} from "../../../utils/client-utils";
+import {makeStyles} from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles({
+    root: {},
+    searchCard: {
+        fontSize: "1.2em",
+        padding: 5,
+    },
+});
+
 
 function SearchDialog({open, handleClose}) {
 
+    const classes = useStyles();
     const {clients, fetchStatus} = useContext(ClientStateContext);
     const dispatch = useContext(ClientDispatchContext);
     const [allClients, setAllClients] = useState(false);
@@ -49,7 +61,7 @@ function SearchDialog({open, handleClose}) {
                 maxWidth={'sm'}
                 fullWidth={true}
             >
-                <DialogTitle id="form-dialog-title">Find your Clients.</DialogTitle>
+                <DialogTitle id="form-dialog-title">Search for your Clients</DialogTitle>
                 <DialogContent>
                     {!allClients && <form>
                         <TextField
@@ -61,8 +73,6 @@ function SearchDialog({open, handleClose}) {
                                 setQuery(event.target.value)
                             }}
                             margin="normal"
-                            /*error={}*/
-                            helperText={'min length 2'}
                             autoFocus
                         />
                     </form>}
@@ -81,7 +91,7 @@ function SearchDialog({open, handleClose}) {
                     </Button>
                 </DialogActions>
                 <DialogContent>
-                    <Grid container justify={'center'}>
+                    <Grid container justify="center">
                         {allClients ? clients.map((client) => (
                             <ClientSearchCard
                                 key={client.id}
@@ -89,14 +99,13 @@ function SearchDialog({open, handleClose}) {
                             />
                         )) : []}
                     </Grid>
-                    <Grid container justify={'center'}>
-                        {searchClients != null && searchClients.map((client) => (
+                    <Grid container justify={'center'} className={classes.root}>
+                        {query !== '' && !allClients ? searchClients.map((client) => (
                             < ClientSearchCard
-                            key={client.id}
-                            client={client}
+                                key={client.id}
+                                client={client}
                             />
-
-                        ))}
+                        )) : []}
                     </Grid>
                 </DialogContent>
             </Dialog>

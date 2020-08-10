@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import SearchDialog from "./SearchClients/SearchDialog";
 import {ConsilBoardStateContext} from "../../context/consilboard/ConsilBoardContext";
@@ -23,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         marginRight: theme.spacing(2),
-        zIndex: 100,
     },
+    Index: {
+        zIndex: "233"
+    }
 }));
 
 export default function ConsilBoardMenu() {
@@ -85,14 +87,15 @@ export default function ConsilBoardMenu() {
                     aria-haspopup="true"
                     onClick={handleToggle}
                 >
-                   <MenuOpenIcon/>
+                    <MenuOpenIcon/>
                     Menu
                 </Button>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                    {({ TransitionProps, placement }) => (
+                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal
+                        className={classes.Index}>
+                    {({TransitionProps, placement}) => (
                         <Grow
                             {...TransitionProps}
-                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                            style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
                         >
                             <Paper>
                                 <ClickAwayListener onClickAway={handleClose}>
@@ -102,24 +105,24 @@ export default function ConsilBoardMenu() {
                                         >
                                             Find 'n' Add Client
                                         </MenuItem>
-                                        <Divider />
+                                        <Divider/>
                                         <MenuItem onClick={handleClose}>Calendar</MenuItem>
                                         <MenuItem onClick={handleClose}>Share Client</MenuItem>
-                                        <Divider />
+                                        <Divider/>
                                         <MenuItem
-                                                onClick={() => {
-                                                    setShowAddDialog(true)
-                                                }}
-                                            >
-                                                Create Client
+                                            onClick={() => {
+                                                setShowAddDialog(true)
+                                            }}
+                                        >
+                                            Create Client
                                         </MenuItem>
                                         {!newConsilBoard && <>
-                                        <MenuItem
-                                                    onClick={() => setShowConsilBoardDialog(true)}
-                                                >
-                                                    Create ConsilBoard!
-                                        </MenuItem>
-                                            </>}
+                                            <MenuItem
+                                                onClick={() => setShowConsilBoardDialog(true)}
+                                            >
+                                                Create ConsilBoard!
+                                            </MenuItem>
+                                        </>}
                                         <MenuItem
                                             onClick={() => setShowRemoveDialog(true)}
                                         >

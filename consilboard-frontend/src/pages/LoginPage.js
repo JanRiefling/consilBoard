@@ -14,16 +14,17 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
-        paddingTop: theme.spacing(4),
+        paddingTop: theme.spacing(3),
         borderStyle: "solid",
         borderColor: consilBoardTheme.palette.primary.main,
         borderWidth: "1px",
         borderRadius: 10,
         height: "30rem",
-        marginTop: "5rem",
+        marginTop: "3rem",
         maxWidth: "500px",
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginLeft: 2,
+        marginRight: 2,
+        width: "100%",
     },
     textField: {
         padding: 5
@@ -85,7 +86,7 @@ function LoginPage() {
             >
                 <Grid item className={classes.textGrid}>
                     <Typography className={classes.welcomeLogin}>
-                        LOGIN TO YOUR BOARD
+                        LOGIN TO YOUR CONSILBOARD
                     </Typography>
                 </Grid>
                 <Grid item>
@@ -107,7 +108,6 @@ function LoginPage() {
                             onChange={(event) => setPassword(event.target.value)}
                         />
                     </div>
-
                 </Grid>
 
                 <Grid item>

@@ -26,13 +26,13 @@ const useStyles = makeStyles((theme) => ({
 export default function ConsilBoard() {
 
     const classes = useStyles();
-    const {clientList} = useContext(ConsilBoardStateContext);
+    const {clientList} = useContext(ConsilBoardStateContext)
 
 
     return (
         <Grid container className={classes.consilBoard}>
             {clientList.map((client) => (
-                <Grid item className={classes.consilCard} xs={12} sm={6} lg={4} xl={3} >
+                <Grid item className={classes.consilCard} xs={12} sm={6} lg={4} xl={3}>
                     <ClientCard
                         key={client}
                         client={client}

@@ -12,6 +12,6 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddCommentDto {
-    @Size(min = 5, message = "comment min length 5")
+    @Size(min = 2, message = "comment min length 2")
     private String commentString;
 }

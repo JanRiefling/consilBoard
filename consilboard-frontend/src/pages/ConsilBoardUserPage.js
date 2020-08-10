@@ -7,11 +7,11 @@ import {makeStyles} from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import ConsilBoardMenu from "../components/ConsilBoardMenuBar/ConsilBoardMenu";
 
+
 const useStyles = makeStyles((theme) => ({
     consilBoardSetting: {
         padding: "0.3rem",
         borderRadius: 5,
-        /*boxShadow: '0px 10px 12px -10px rgba(0,0,0,0.35)',*/
     },
 
     menuButtons: {
@@ -37,7 +37,7 @@ function ConsilBoardUserPage() {
             direction="column"
         >
             <Grid item className={classes.menuButtons}>
-                <ConsilBoardMenu />
+                <ConsilBoardMenu/>
             </Grid>
             <Grid item className={classes.consilBoardSetting}>
                 <Paper elevation={5}>
