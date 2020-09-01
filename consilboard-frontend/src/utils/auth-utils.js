@@ -15,7 +15,7 @@ export async function performLogin(username, password) {
 }
 
 export async function performSignUp(username, password) {
-    const response = await fetch('/auth/signup', {
+    const response = await fetch('http://localhost:8080/auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
